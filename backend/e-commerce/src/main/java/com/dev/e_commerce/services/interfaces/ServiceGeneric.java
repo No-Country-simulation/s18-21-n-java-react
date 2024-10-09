@@ -11,5 +11,4 @@ public interface ServiceGeneric<T, EntityDto> {
     Iterable<EntityDto> findAll();
 
     void deleteById(Long id);
-
 }
