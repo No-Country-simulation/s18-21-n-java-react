@@ -11,20 +11,21 @@ import java.io.Serializable;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ApiResponseDto<T>  implements Serializable {
 
-  boolean status;
-  String message;
-  T data;
-  Iterable<T> dataIterable;
+    boolean status;
+    String message;
+    T data;
+    Iterable<T> dataIterable;
 
-  public ApiResponseDto(boolean status, String message, T data) {
-    this.status = status;
-    this.message = message;
-    this.data = data;
-  }
 
-  public ApiResponseDto(boolean status, String message, Iterable<T> dataIterable) {
-    this.status = status;
-    this.message = message;
-    this.dataIterable = dataIterable;
-  }
+    public ApiResponseDto(boolean status, String message, T data) {
+        this.status = status;
+        this.message = message;
+        this.data = data;
+    }
+
+    public ApiResponseDto(boolean status, String message, Iterable<T> dataIterable) {
+        this.status = status;
+        this.message = message;
+        this.dataIterable = dataIterable;
+    }
 }
