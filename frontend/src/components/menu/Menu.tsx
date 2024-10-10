@@ -17,7 +17,7 @@ export const Menu = () => {
           <NavigationMenuItem>
             <NavigationMenuLink
               href="/categories"
-              className="text-base sm:text-lg font-medium text-gray-700 hover:text-blue-600 hover:underline transition-all"
+              className="text-base sm:text-lg font-medium text-gray-700 hover:text-primario focus:underline active:underline transition-all"
             >
               Categorias
             </NavigationMenuLink>
@@ -25,7 +25,7 @@ export const Menu = () => {
           <NavigationMenuItem>
             <NavigationMenuLink
               href="/offers"
-              className="text-base sm:text-lg font-medium text-gray-700 hover:text-blue-600 hover:underline transition-all"
+              className="text-base sm:text-lg font-medium text-gray-700 hover:text-primario focus:underline active:underline transition-all"
             >
               Ofertas del mes
             </NavigationMenuLink>
@@ -33,7 +33,7 @@ export const Menu = () => {
           <NavigationMenuItem>
             <NavigationMenuLink
               href="/about"
-              className="text-base sm:text-lg font-medium text-gray-700 hover:text-blue-600 hover:underline transition-all"
+              className="text-base sm:text-lg font-medium text-gray-700 hover:text-primario focus:underline active:underline transition-all"
             >
               Nosotros
             </NavigationMenuLink>
@@ -41,7 +41,7 @@ export const Menu = () => {
           <NavigationMenuItem>
             <NavigationMenuLink
               href="/help"
-              className="text-base sm:text-lg font-medium text-gray-700 hover:text-blue-600 hover:underline transition-all"
+              className="text-base sm:text-lg font-medium text-secundario hover:text-primario focus:underline active:underline transition-all"
             >
               Ayuda
             </NavigationMenuLink>

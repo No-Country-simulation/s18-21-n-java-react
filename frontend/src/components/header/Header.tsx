@@ -4,7 +4,7 @@ import { IoCartOutline, IoPerson, IoSearch } from "react-icons/io5";
 
 export const Header = () => {
   return (
-    <header className="bg-slate-900 text-white p-4">
+    <header className="bg-gradient-to-r from-primario to-secundario text-white p-4">
       <div className="flex items-center justify-between md:justify-around">
         {/* Logo */}
         <Link href="/" className="text-3xl font-bold flex items-center">
@@ -23,7 +23,7 @@ export const Header = () => {
           <input
             type="text"
             placeholder="Buscar..."
-            className="w-full px-4 py-2 rounded-md bg-slate-800 text-white focus:outline-none"
+            className="w-full px-4 py-2 rounded-md bg-gray-100 text-secundario focus:outline-none"
           />
         </div>
 
