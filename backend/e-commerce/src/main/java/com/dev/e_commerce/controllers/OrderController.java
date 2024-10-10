@@ -18,8 +18,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("api/v1/order")
 public class OrderController {
-    @Autowired
-    private ApiResponseDto response;
+
     @Autowired
     private OrderService orderService;
     @Autowired

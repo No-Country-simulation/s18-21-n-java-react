@@ -3,7 +3,7 @@ package com.dev.e_commerce.models;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
+
 
 import java.util.Date;
 
