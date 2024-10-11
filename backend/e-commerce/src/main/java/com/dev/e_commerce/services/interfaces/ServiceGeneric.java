@@ -2,13 +2,13 @@ package com.dev.e_commerce.services.interfaces;
 
 import java.util.Optional;
 
-public interface ServiceGeneric<T, EntityDto> {
+public interface ServiceGeneric<T, RequestDto, ResponseDto> {
 
-    EntityDto save(EntityDto requestDTO);
+    ResponseDto save(RequestDto requestDTO);
 
-    Optional<EntityDto> findById(Long id);
+    Optional<ResponseDto> findById(Long id);
 
-    Iterable<EntityDto> findAll();
+    Iterable<ResponseDto> findAll();
 
     void deleteById(Long id);
 }

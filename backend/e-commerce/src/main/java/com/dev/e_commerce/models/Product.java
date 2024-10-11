@@ -1,9 +1,11 @@
-package com.example.ProyectoEcommece.entity;
+package com.dev.e_commerce.models;
 
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+
+import java.util.List;
 
 @Entity
 @Data
@@ -38,6 +40,9 @@ public class Product {
     private String shortDescription;
 
     @ManyToOne
-    @JoinColumn(name = "client_id", nullable = false)
-    private Client client;
+    @JoinColumn(name = "seller_id", nullable = false)
+    private Client seller;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private List<DetailsOrder> detailsProducts;
 }

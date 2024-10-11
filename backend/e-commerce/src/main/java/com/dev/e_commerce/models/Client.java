@@ -1,4 +1,4 @@
-package com.example.ProyectoEcommece.entity;
+package com.dev.e_commerce.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -9,16 +9,16 @@ import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.*;
+import lombok.NoArgsConstructor;
+
 @Entity
+@Table(name = "client")
+@PrimaryKeyJoinColumn(name = "user_id")
 @Data
 @AllArgsConstructor
-@Table(name = "client")
+@NoArgsConstructor
+public class Client extends User  {
 
-public class Client  {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long client_id;
 
     @Column(nullable = false)
     private String phone;
@@ -29,11 +29,28 @@ public class Client  {
     @Temporal(TemporalType.DATE)
     private Date birthDate;
 
+
+    // -------------------Relacionships------------------
     @ManyToOne
     @JoinColumn(name = "location_id", nullable = false)
     private Location location;
 
    
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "seller", cascade = CascadeType.ALL)
     private List<Product> products;
+
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    private List<Orders> orders;
+
+//    public Client(User user){
+//        this.setId(user.getId());
+//        this.setName(user.getName());
+//        this.setLastname(user.getLastname());
+//        this.setEmail(user.getEmail());
+//        this.setPassword(user.getPassword());
+//        this.setIsEnabled(user.getIsEnabled());
+//        this.setRole(user.getRole());
+//        this.setCreatedAt(user.getCreatedAt());
+//    }
+
 }
