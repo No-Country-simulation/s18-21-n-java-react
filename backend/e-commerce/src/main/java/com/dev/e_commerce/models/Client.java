@@ -2,19 +2,17 @@ package com.dev.e_commerce.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
 import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.*;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "client")
 @PrimaryKeyJoinColumn(name = "user_id")
-@Data
+@Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Client extends User  {
