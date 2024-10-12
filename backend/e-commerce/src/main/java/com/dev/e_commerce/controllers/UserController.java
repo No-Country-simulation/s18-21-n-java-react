@@ -6,7 +6,6 @@ import com.dev.e_commerce.dtos.user.UserResponseDto;
 import com.dev.e_commerce.exceptions.ApplicationException;
 import com.dev.e_commerce.mappers.user.UserMapper;
 import com.dev.e_commerce.services.interfaces.UserService;
-import com.sun.jdi.event.ExceptionEvent;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,7 +27,7 @@ public class UserController {
     }
 
 
-    @PostMapping("/save")
+    @PostMapping("/register")
     @Operation(summary = "Registra un usuario")
     public ResponseEntity<ApiResponseDto<UserResponseDto>> save(@RequestBody UserRequestDto requestDto) {
 
@@ -58,10 +57,35 @@ public class UserController {
         Optional<UserResponseDto> user = userService.findById(id);
         if (user.isPresent()) {
             UserResponseDto userResponseD = user.get();
-            String message = "Usuario encontrado";
+            String message = "User found";
             return new ResponseEntity<>(new ApiResponseDto<>(true, message, userResponseD), HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(new ApiResponseDto<>(false, "Usuario no encontrado", null), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(new ApiResponseDto<>(false, "User not found", null), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PutMapping("/{id}")
+    @Operation(summary = "Actualiza un usuario")
+    public ResponseEntity<ApiResponseDto<UserResponseDto>> updateUser(@PathVariable Long id, @RequestBody UserRequestDto requestDto) {
+        Optional<UserResponseDto> user = userService.findById(id);
+        if (user.isPresent()) {
+            userService.updateUser(requestDto,id);
+            String message = "User updated";
+            return new ResponseEntity<>(new ApiResponseDto<>(true, message, user.get()), HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(new ApiResponseDto<>(false, "User not found", null), HttpStatus.NOT_FOUND);
+        }
+    }
+    @DeleteMapping("/{id}")
+    @Operation(summary = "Elimina un usuario")
+    public ResponseEntity<ApiResponseDto<UserResponseDto>> deleteById(@PathVariable Long id) {
+        Optional<UserResponseDto> user = userService.findById(id);
+        if (user.isPresent()) {
+            userService.deleteById(id);
+            String message = "User deleted";
+            return new ResponseEntity<>(new ApiResponseDto<>(true, message, user.get()), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(new ApiResponseDto<>(false, "User not found", null), HttpStatus.NOT_FOUND);
         }
     }
 }

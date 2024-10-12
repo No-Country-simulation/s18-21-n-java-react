@@ -5,7 +5,6 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 
 public record UserRequestDto(
-
 String name,
 String lastname,
 String email,

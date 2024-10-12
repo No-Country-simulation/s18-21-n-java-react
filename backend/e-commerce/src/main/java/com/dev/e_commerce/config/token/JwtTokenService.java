@@ -23,7 +23,7 @@ import java.util.function.Function;
 @Service
 public class JwtTokenService {
 
-   // @Value("${api.security.secret}")
+    @Value("${api.security.secret}")
     private String apiSecret;
 
     public String getToken(User user) {

@@ -42,15 +42,5 @@ public class Client extends User  {
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
     private List<Orders> orders;
 
-//    public Client(User user){
-//        this.setId(user.getId());
-//        this.setName(user.getName());
-//        this.setLastname(user.getLastname());
-//        this.setEmail(user.getEmail());
-//        this.setPassword(user.getPassword());
-//        this.setIsEnabled(user.getIsEnabled());
-//        this.setRole(user.getRole());
-//        this.setCreatedAt(user.getCreatedAt());
-//    }
 
 }

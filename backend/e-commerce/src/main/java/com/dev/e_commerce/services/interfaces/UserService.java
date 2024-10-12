@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface UserService extends ServiceGeneric< User, UserRequestDto, UserResponseDto> {
 
-
+void updateUser(UserRequestDto requestDto, Long id);
 
 
 }

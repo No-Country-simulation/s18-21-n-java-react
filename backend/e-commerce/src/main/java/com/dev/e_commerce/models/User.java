@@ -6,6 +6,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.List;
 @NoArgsConstructor
 @DiscriminatorColumn(name = "user_type")
 @Inheritance(strategy = InheritanceType.JOINED)
+@ToString
 public class User implements UserDetails {
 
    @Id
@@ -40,8 +42,8 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createdAt;
+    @Temporal(TemporalType.DATE)
+    private LocalDate createdAt;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
