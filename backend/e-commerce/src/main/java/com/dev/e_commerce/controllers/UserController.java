@@ -7,6 +7,7 @@ import com.dev.e_commerce.exceptions.ApplicationException;
 import com.dev.e_commerce.mappers.user.UserMapper;
 import com.dev.e_commerce.services.interfaces.UserService;
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +30,7 @@ public class UserController {
 
     @PostMapping("/register")
     @Operation(summary = "Registra un usuario")
-    public ResponseEntity<ApiResponseDto<UserResponseDto>> save(@RequestBody UserRequestDto requestDto) {
+    public ResponseEntity<ApiResponseDto<UserResponseDto>> save(@RequestBody @Valid UserRequestDto requestDto) {
 
         UserResponseDto responseDto = userService.save(requestDto);
         if (responseDto == null) {
