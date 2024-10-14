@@ -129,7 +129,7 @@
 			<version>1.5.5.Final</version>
 		</dependency>
 
-								<!-- FLYWAY DEPENDENCIES -->
+								<!-- FLYWAY DEPENDENCIES
 		<dependency>
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-core</artifactId>
@@ -137,7 +137,7 @@
 		<dependency>
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-mysql</artifactId>
-		</dependency>
+		</dependency> -->
 
 	</dependencies>
 
