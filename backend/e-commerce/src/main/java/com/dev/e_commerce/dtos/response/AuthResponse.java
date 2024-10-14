@@ -1,7 +1,6 @@
-package com.dev.e_commerce.dtos.authorization;
+package com.dev.e_commerce.dtos.response;
 
 import lombok.Builder;
-import lombok.Data;
 
 @Builder
 public record AuthResponse(

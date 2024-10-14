@@ -1,8 +1,12 @@
 package com.dev.e_commerce.exceptions;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class ApplicationException extends RuntimeException{
 
     private String campo;

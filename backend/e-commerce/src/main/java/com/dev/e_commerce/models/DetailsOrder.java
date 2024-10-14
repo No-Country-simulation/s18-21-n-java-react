@@ -3,7 +3,6 @@ package com.dev.e_commerce.models;
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,7 +18,7 @@ public class DetailsOrder {
 
     @ManyToOne
     @JoinColumn(name = "order_id", nullable = false)
-    private Orders order;  // RELACION CON LA ORDEN
+    private Order order;  // RELACION CON LA ORDEN
 
     @ManyToOne
     @JoinColumn(name = "product_id", nullable = false)
