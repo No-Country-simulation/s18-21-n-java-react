@@ -4,7 +4,7 @@ import com.dev.e_commerce.dtos.ApiResponseDto;
 import com.dev.e_commerce.dtos.OrderDto;
 import com.dev.e_commerce.mappers.OrderMapper;
 import com.dev.e_commerce.models.Order;
-import com.dev.e_commerce.services.OrderService;
+import com.dev.e_commerce.services.implement.OrderServiceImp;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 public class OrderController {
 
     @Autowired
-    private OrderService orderService;
+    private OrderServiceImp orderServiceImp;
     @Autowired
     private OrderMapper orderMapper;
 
@@ -28,7 +28,7 @@ public class OrderController {
     public ResponseEntity<ApiResponseDto<OrderDto>> createOrder(@RequestBody OrderDto orderDto) {
         try {
             Order order = orderMapper.toOrderEntity(orderDto);
-            order = orderService.createOrder(order);
+            order = orderServiceImp.createOrder(order);
             OrderDto responseOrderDto = orderMapper.toOrderDto(order);
             ApiResponseDto<OrderDto> response = new ApiResponseDto<>(true, "Order created successfully", responseOrderDto);
             return ResponseEntity.ok(response);
@@ -42,7 +42,7 @@ public class OrderController {
     @GetMapping("/{idOrder}")
     public ResponseEntity<ApiResponseDto<OrderDto>> getOrderById(@PathVariable Long idOrder) {
         try {
-            Order order = orderService.getOrderById(idOrder);
+            Order order = orderServiceImp.getOrderById(idOrder);
             OrderDto responseOrderDto = orderMapper.toOrderDto(order);
             ApiResponseDto<OrderDto> response = new ApiResponseDto<>(true, "Order retrieved successfully", responseOrderDto);
             return ResponseEntity.ok(response);
@@ -55,7 +55,7 @@ public class OrderController {
     // Método para obtener todas las órdenes
     @GetMapping("/")
     public ResponseEntity<ApiResponseDto<OrderDto>> getAllOrders() {
-        List<Order> orders = orderService.getAllOrder();
+        List<Order> orders = orderServiceImp.getAllOrder();
         List<OrderDto> orderDtos = orders.stream()
                 .map(orderMapper::toOrderDto)
                 .collect(Collectors.toList());
