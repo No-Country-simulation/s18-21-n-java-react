@@ -1,6 +1,6 @@
 package com.dev.e_commerce.mappers;
 
-import com.dev.e_commerce.dtos.reponse.OrderResponseDto;
+import com.dev.e_commerce.dtos.response.OrderResponseDto;
 import com.dev.e_commerce.dtos.request.OrderRequestDto;
 import com.dev.e_commerce.models.Order;
 import org.mapstruct.Mapper;

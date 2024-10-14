@@ -42,7 +42,7 @@ public class UserController {
 
     @GetMapping("/findAll")
     @Operation(summary = "Obtiene todos los usuarios")
-    public ResponseEntity<ApiResponseDto<UserResponseDto>> findAll() {
+    public ResponseEntity<ApiResponseDto<Iterable<UserResponseDto>>> findAll() {
         try {
             Iterable<UserResponseDto> users = userService.findAll();
             return new ResponseEntity<>(new ApiResponseDto<>(true, "Users found", users), HttpStatus.OK);

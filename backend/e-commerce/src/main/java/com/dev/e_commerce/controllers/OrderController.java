@@ -1,7 +1,7 @@
 package com.dev.e_commerce.controllers;
 
 import com.dev.e_commerce.dtos.ApiResponseDto;
-import com.dev.e_commerce.dtos.reponse.OrderResponseDto;
+import com.dev.e_commerce.dtos.response.OrderResponseDto;
 import com.dev.e_commerce.dtos.request.OrderRequestDto;
 import com.dev.e_commerce.mappers.OrderMapper;
 import com.dev.e_commerce.models.Order;

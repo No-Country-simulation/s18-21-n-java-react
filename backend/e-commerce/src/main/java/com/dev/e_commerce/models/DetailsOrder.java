@@ -19,7 +19,7 @@ public class DetailsOrder {
 
     @ManyToOne
     @JoinColumn(name = "order_id", nullable = false)
-    private Orders order;  // RELACION CON LA ORDEN
+    private Order order;  // RELACION CON LA ORDEN
 
     @ManyToOne
     @JoinColumn(name = "product_id", nullable = false)
