@@ -1,4 +1,4 @@
-package com.dev.e_commerce.services;
+package com.dev.e_commerce.services.implement;
 
 import com.cloudinary.Cloudinary;
 import com.dev.e_commerce.services.interfaces.CloudinaryService;

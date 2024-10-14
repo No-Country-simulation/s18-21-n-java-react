@@ -1,10 +1,9 @@
 package com.dev.e_commerce.mappers.user;
 
-import com.dev.e_commerce.dtos.user.UserRequestDto;
-import com.dev.e_commerce.dtos.user.UserResponseDto;
+import com.dev.e_commerce.dtos.request.UserRequestDto;
+import com.dev.e_commerce.dtos.response.UserResponseDto;
 import com.dev.e_commerce.models.User;
 import org.mapstruct.Mapper;
-import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = "spring")
 public abstract class UserMapper {

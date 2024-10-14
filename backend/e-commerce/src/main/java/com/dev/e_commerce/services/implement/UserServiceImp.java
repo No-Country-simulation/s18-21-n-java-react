@@ -1,7 +1,7 @@
 package com.dev.e_commerce.services.implement;
 
-import com.dev.e_commerce.dtos.user.UserRequestDto;
-import com.dev.e_commerce.dtos.user.UserResponseDto;
+import com.dev.e_commerce.dtos.request.UserRequestDto;
+import com.dev.e_commerce.dtos.response.UserResponseDto;
 import com.dev.e_commerce.exceptions.ApplicationException;
 import com.dev.e_commerce.mappers.user.UserMapper;
 import com.dev.e_commerce.models.Role;
@@ -13,8 +13,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
