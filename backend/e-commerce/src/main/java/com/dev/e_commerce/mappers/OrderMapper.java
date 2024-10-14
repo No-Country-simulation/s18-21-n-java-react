@@ -1,7 +1,7 @@
 package com.dev.e_commerce.mappers;
 
-import ch.qos.logback.core.model.ComponentModel;
-import com.dev.e_commerce.dtos.OrderDto;
+import com.dev.e_commerce.dtos.reponse.OrderResponseDto;
+import com.dev.e_commerce.dtos.request.OrderRequestDto;
 import com.dev.e_commerce.models.Order;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
@@ -9,7 +9,7 @@ import org.mapstruct.MappingConstants;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING,uses={})
 public interface OrderMapper {
 
-Order toOrderEntity(OrderDto orderDto);
-OrderDto toOrderDto(Order order);
+Order toOrderEntity(OrderRequestDto orderRequestDtoDtoDto);
+OrderResponseDto toOrderResponseDto(Order order);
 
 }
