@@ -3,7 +3,6 @@ package com.dev.e_commerce.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,7 +24,7 @@ public class Product {
     @Column(nullable = false)
     private Double price;
 
-    @Column(nullable = true, columnDefinition = "TEXT")
+    @Column(columnDefinition = "TEXT")
     private String description;
 
     @Column(nullable = false)
@@ -39,7 +38,7 @@ public class Product {
     @Column(nullable = false)
     private Integer stock;
 
-    @Column(nullable = true)
+    @Column()
     private String shortDescription;
 
     @ManyToOne
