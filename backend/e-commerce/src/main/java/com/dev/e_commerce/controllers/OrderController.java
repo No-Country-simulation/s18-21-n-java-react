@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 
 
 @RestController
-@RequestMapping("api/v1/order")
+@RequestMapping("${api.base}/order")
 public class OrderController {
 
     @Autowired
