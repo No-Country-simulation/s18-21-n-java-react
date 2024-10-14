@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { IoCartOutline, IoPerson, IoSearch } from "react-icons/io5";
 
 export const Header = () => {
@@ -8,14 +7,7 @@ export const Header = () => {
       <div className="flex items-center justify-between md:justify-around">
         {/* Logo */}
         <Link href="/" className="text-3xl font-bold flex items-center">
-          <Image
-            src="/images/alienware.jpg"
-            alt="Logo"
-            width={100}
-            height={100}
-            className="rounded-full"
-            title="Logo"
-          />
+          <h1>SmartStore</h1>
         </Link>
 
         {/* Barra de búsqueda */}
