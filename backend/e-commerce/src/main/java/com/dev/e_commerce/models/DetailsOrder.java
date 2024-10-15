@@ -1,13 +1,14 @@
-package com.example.ProyectoEcommece.entity;
+package com.dev.e_commerce.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 public class DetailsOrder {
 
