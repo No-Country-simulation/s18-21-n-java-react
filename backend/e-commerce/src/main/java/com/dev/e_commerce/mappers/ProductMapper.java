@@ -1,8 +1,8 @@
-package com.example.ProyectoEcommece.Mappers;
+package com.dev.e_commerce.mappers;
 
 
-import com.example.ProyectoEcommece.dtos.ProductDTO;
-import com.example.ProyectoEcommece.entity.Product;
+import com.dev.e_commerce.dtos.ProductDTO;
+import com.dev.e_commerce.models.Product;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

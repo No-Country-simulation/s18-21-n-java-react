@@ -1,8 +1,9 @@
-package com.example.ProyectoEcommece.dtos;
+package com.dev.e_commerce.dtos;
 
-import com.example.ProyectoEcommece.entity.Category;
-import com.example.ProyectoEcommece.entity.Client;
 
+
+import com.dev.e_commerce.models.Category;
+import com.dev.e_commerce.models.Client;
 import lombok.*;
 
 @Data  // Genera los getters, setters, equals, hashCode, toString automáticamente

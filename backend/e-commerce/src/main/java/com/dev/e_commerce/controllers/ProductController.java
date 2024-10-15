@@ -1,26 +1,25 @@
-package com.example.ProyectoEcommece.controllers;
+package com.dev.e_commerce.controllers;
 
 
-import com.example.ProyectoEcommece.Service.ProductService;
-import com.example.ProyectoEcommece.dtos.ProductDTO;
-import com.example.ProyectoEcommece.entity.Product;
+import com.dev.e_commerce.dtos.ProductDTO;
+import com.dev.e_commerce.models.Product;
+import com.dev.e_commerce.services.interfaces.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 
 @RestController
 public class ProductController {
 
     @Autowired
-    private ProductService  productService;
+    private ProductService productService;
 
     // CONTROLADOR LISTADO PRODUCTO
     @GetMapping("/listado/productos")
     public List<Product> listProducto(){
+
         return this.productService.listProduct();
     }
     // CONTROLADOR GUARDAR  PRODUCTO
