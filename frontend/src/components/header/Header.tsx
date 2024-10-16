@@ -26,7 +26,7 @@ export const Header = () => {
 
         {/* Iconos de carrito y sesión */}
         <div className="flex items-center space-x-4">
-          <Link href="/cart" className="text-2xl">
+          <Link href="../../CartPage/CartPage.tsx" className="text-2xl">{/*Link para ir al carrito*/}
             <IoCartOutline />
           </Link>
           <Link href="/login" className="text-2xl">
@@ -37,3 +37,4 @@ export const Header = () => {
     </header>
   );
 };
+
