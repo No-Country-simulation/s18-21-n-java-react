@@ -1,6 +1,8 @@
 package com.dev.e_commerce.models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

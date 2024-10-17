@@ -38,7 +38,7 @@ public class Client extends User  {
     private List<Product> products;
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
-    private List<Orders> orders;
+    private List<Order> orders;
 
 
 }

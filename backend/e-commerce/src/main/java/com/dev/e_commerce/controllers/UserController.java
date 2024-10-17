@@ -1,11 +1,11 @@
 package com.dev.e_commerce.controllers;
 
 import com.dev.e_commerce.dtos.ApiResponseDto;
-import com.dev.e_commerce.dtos.user.UpdatePasswordDto;
-import com.dev.e_commerce.dtos.user.UserRequestDto;
-import com.dev.e_commerce.dtos.user.UserResponseDto;
+import com.dev.e_commerce.dtos.request.UserRequestDto;
+import com.dev.e_commerce.dtos.response.UserResponseDto;
+import com.dev.e_commerce.dtos.request.UpdatePasswordDto;
 import com.dev.e_commerce.exceptions.ApplicationException;
-import com.dev.e_commerce.mappers.user.UserMapper;
+import com.dev.e_commerce.mappers.UserMapper;
 import com.dev.e_commerce.services.implement.MailService;
 import com.dev.e_commerce.services.interfaces.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -22,7 +22,6 @@ import java.util.Optional;
 public class UserController {
     private final UserService userService;
     private final UserMapper userMapper;
-
 
     @Autowired
     private UserController(UserService userService, UserMapper userMapper, MailService mailService) {
@@ -55,7 +54,7 @@ public class UserController {
 
     @GetMapping("/findAll")
     @Operation(summary = "Obtiene todos los usuarios")
-    public ResponseEntity<ApiResponseDto<UserResponseDto>> findAll() {
+    public ResponseEntity<ApiResponseDto<Iterable<UserResponseDto>>> findAll() {
         try {
             Iterable<UserResponseDto> users = userService.findAll();
             return new ResponseEntity<>(new ApiResponseDto<>(true, "Users found", users), HttpStatus.OK);

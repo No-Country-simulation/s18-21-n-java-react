@@ -1,8 +1,8 @@
 package com.dev.e_commerce.services.implement;
 
 import com.dev.e_commerce.config.token.JwtTokenService;
-import com.dev.e_commerce.dtos.authorization.AuthRequest;
-import com.dev.e_commerce.dtos.authorization.AuthResponse;
+import com.dev.e_commerce.dtos.request.AuthRequest;
+import com.dev.e_commerce.dtos.response.AuthResponse;
 import com.dev.e_commerce.models.User;
 import com.dev.e_commerce.services.interfaces.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;

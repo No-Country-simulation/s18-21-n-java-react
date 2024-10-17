@@ -1,4 +1,4 @@
-package com.dev.e_commerce.dtos.user;
+package com.dev.e_commerce.dtos.request;
 
 public record UpdatePasswordDto(
 

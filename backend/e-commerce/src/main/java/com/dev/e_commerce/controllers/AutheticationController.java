@@ -1,7 +1,7 @@
 package com.dev.e_commerce.controllers;
 
-import com.dev.e_commerce.dtos.authorization.AuthRequest;
-import com.dev.e_commerce.dtos.authorization.AuthResponse;
+import com.dev.e_commerce.dtos.request.AuthRequest;
+import com.dev.e_commerce.dtos.response.AuthResponse;
 import com.dev.e_commerce.services.implement.AuthServiceImp;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;

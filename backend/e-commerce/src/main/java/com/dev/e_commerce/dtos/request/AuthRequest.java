@@ -1,8 +1,9 @@
-package com.dev.e_commerce.dtos.authorization;
+package com.dev.e_commerce.dtos.request;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+
 
 public record AuthRequest(
         @NotBlank(message = "Email is required")
