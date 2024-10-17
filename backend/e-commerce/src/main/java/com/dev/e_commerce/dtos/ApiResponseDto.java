@@ -35,4 +35,8 @@ public class ApiResponseDto<T>  implements Serializable {
         this.totalPages = totalPages;
         this.totalItems = totalItems;
     }
+
+
+
+
 }

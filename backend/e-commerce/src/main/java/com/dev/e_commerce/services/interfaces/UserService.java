@@ -10,5 +10,4 @@ public interface UserService extends ServiceGeneric< User, UserRequestDto, UserR
 
 void updateUser(UserRequestDto requestDto, Long id);
 
-
 }

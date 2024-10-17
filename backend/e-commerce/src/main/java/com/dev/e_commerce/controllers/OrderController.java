@@ -86,7 +86,9 @@ public class OrderController {
             ApiResponseDto<OrderResponseDto> errorResponse = new ApiResponseDto<>(false, e.getMessage(), null);
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
         }
+
     }
+
     @Operation(description = "Get all orders",
     summary = "Get all orders",
     responses = {
