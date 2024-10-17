@@ -56,3 +56,25 @@ export const productList = [
     price: 100,
   },
 ];
+
+ export const baneres = [ 
+  {url: '/images/monitorAsus.webp', name: 'Monitor asus'},
+  {url: '/images/macBookM3.webp', name: 'Mac book' },
+  {url: '/images/descuentoTelevisores.webp', name: 'MAc' },
+ 
+ ]
+
+export const marcasList = [
+  {url: '/images/Marcas/46.jpg', name: 'Xiaomi'},
+  {url: '/images/Marcas/18.jpg', name: 'Logitech'},
+  {url: '/images/Marcas/37.jpg', name: 'Kingstom'},
+  {url: '/images/Marcas/23.jpg', name: 'Asus'},
+  {url: '/images/Marcas/25.jpg', name: 'Apple'},
+  {url: '/images/Marcas/40.jpg', name: 'Amazon'},
+  {url: '/images/Marcas/14.jpg', name: 'AlienWare'},
+  {url: '/images/Marcas/20.jpg', name: 'Epson'},
+  {url: '/images/Marcas/32.jpg', name: 'Dell'},
+  {url: '/images/Marcas/5.jpg', name: 'Dlink'},
+  {url: '/images/Marcas/45.jpg', name: 'Huawei'},
+  {url: '/images/Marcas/36.jpg', name: 'hp'},
+]

@@ -1,4 +1,6 @@
+'use client'
 import React from 'react'
+import Autoplay from "embla-carousel-autoplay"
 
 import {
   Carousel,
@@ -13,8 +15,17 @@ import { productList } from '@/lib/utils';
 
 
 export const ProductsCarousel = () => {
+
   return (
-    <Carousel className="w-9/12  ">
+    <Carousel 
+    plugins={[
+      Autoplay({
+        delay: 2000,
+      }),
+    ]}
+    className="w-9/12  " 
+   
+    >
       <CarouselContent className="-ml-1">
       {productList.map((product, index) => (
           <CarouselItem key={index} className="pl-1 md:basis-1/2 lg:basis-1/3">
