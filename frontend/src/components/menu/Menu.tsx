@@ -16,6 +16,14 @@ export const Menu = () => {
           {/* Se utiliza un item por cada link */}
           <NavigationMenuItem>
             <NavigationMenuLink
+              href="/products"
+              className="text-base sm:text-lg font-medium text-gray-700 hover:text-primario focus:underline active:underline transition-all"
+            >
+              Productos
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuLink
               href="/categories"
               className="text-base sm:text-lg font-medium text-gray-700 hover:text-primario focus:underline active:underline transition-all"
             >
