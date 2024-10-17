@@ -1,17 +1,20 @@
 import { ProductGrid } from "@/components";
 import { ProductsCarousel } from "@/components";
+import { InifiniteScroll } from "@/components/homePage/InifiniteScroll";
 import { MainCarousel } from "@/components/homePage/MainCarousel";
 export default function HomePage() {
   return (
-    <div>
-       <div className="flex justify-center ">
+    <div className="flex flex-col items-center">
+     
           <MainCarousel/>
-      </div>
-       <div className="flex items-center flex-col ">
+       
        <h2 className="text-4xl font-bold my-20">Lo mas vendido</h2>
      
         <ProductsCarousel />
-      </div>
+
+        <h2 className="text-4xl font-bold my-16 w-3/5 text-center">Contamos con los productos de las marcas mas reconocidas a nivel mundial </h2>
+        <InifiniteScroll/>
+     
         <ProductGrid />
 
       
