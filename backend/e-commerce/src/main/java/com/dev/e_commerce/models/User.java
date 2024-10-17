@@ -35,7 +35,9 @@ public class User implements UserDetails {
 
     private String photoUrl;
 
-    private Boolean isEnabled;
+    private Boolean isEnabled= false;
+
+    private String verificationCode;
 
     @Enumerated(EnumType.STRING)
     private Role role;
