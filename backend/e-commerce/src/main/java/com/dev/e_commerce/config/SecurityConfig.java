@@ -35,6 +35,7 @@ public class SecurityConfig {
                                         "/v3/api-docs/**").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/**").permitAll()
                                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                                .requestMatchers(HttpMethod.PATCH, "/**").permitAll()
                                 .requestMatchers(HttpMethod.POST, "/**").permitAll()
                                 .requestMatchers(HttpMethod.PUT, "/**").permitAll()
                                 .requestMatchers(HttpMethod.DELETE, "/**").permitAll()
