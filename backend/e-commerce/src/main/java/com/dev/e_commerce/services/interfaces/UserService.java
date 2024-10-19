@@ -14,5 +14,4 @@ void changePassword(UpdatePasswordDto requestDto, Long id);
 
 boolean validateCode(String email, String code);
 
-
 }
