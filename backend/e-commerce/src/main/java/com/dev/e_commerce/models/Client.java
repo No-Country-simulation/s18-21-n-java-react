@@ -15,6 +15,7 @@ import jakarta.persistence.*;
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Client extends User  {
 
 

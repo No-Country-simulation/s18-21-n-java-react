@@ -2,14 +2,14 @@ package com.dev.e_commerce.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Setter
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Table(name = "location")
 public class Location {
 
