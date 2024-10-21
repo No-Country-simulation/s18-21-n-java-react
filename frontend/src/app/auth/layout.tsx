@@ -23,6 +23,11 @@ const authTexts: Record<string, Record<string, string>> = {
     description: "¿Ya tienes una cuenta? ¡Inicia sesión aquí!",
     footer: "Registrarme",
   },
+  verification: {
+    title: "Verifica tu cuenta",
+    description: "Inserta el código que te enviamos por correo",
+    footer: "Verificar",
+  }
 };
 
 export default function AuthLayout({
@@ -32,23 +37,21 @@ export default function AuthLayout({
 }>) {
   let action = "";
   const pathname = usePathname();
-  if (pathname.match("/signup")) {
-    action = "signup";
-  } else {
-    action = "login";
-  }
+  if (pathname.match("/signup")) action = "signup";
+  if (pathname.match("/login")) action = "login";
+  if (pathname.match("/verification")) action = "verification";
 
   return (
     <Card className="max-w-sm mx-auto">
       <CardHeader>
         <CardTitle>{authTexts[action].title}</CardTitle>
         <CardDescription>
-          <Link
+          {action === "verification" ? <span>{authTexts[action].description}</span> : <Link
             href={`/auth/${action === "login" ? "signup" : "login"}`}
             className="underline"
           >
             {authTexts[action].description}
-          </Link>
+          </Link>}
         </CardDescription>
       </CardHeader>
       <CardContent>{children}</CardContent>
@@ -56,8 +59,8 @@ export default function AuthLayout({
         <Link href="/">
           <Button variant="outline">Cancelar</Button>
         </Link>
-        <Button type="submit" form={action === "login" ? "login" : "signup"}>
-          {action === "login" ? "Iniciar sesión" : "Registrar"}
+        <Button type="submit" form={action}>
+          {authTexts[action].footer}
         </Button>
       </CardFooter>
     </Card>

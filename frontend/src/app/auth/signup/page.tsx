@@ -5,12 +5,17 @@ import {Input} from "@/components/ui/input";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signUpSchema } from "@/lib/formValidations/authValidation";
+import { signup } from "@/services/authService";
 
 export default function SignUpPage() {
-  const { register } = useForm({resolver: zodResolver(signUpSchema)});
+  const { register, handleSubmit } = useForm({resolver: zodResolver(signUpSchema)});
+
+  function onRegister(data: object) {
+    signup(data);
+  }
 
   return (
-    <form id="signup">
+    <form id="signup" onSubmit={handleSubmit(onRegister)}>
       <Label className="block pt-4 pb-2">
         Nombre(s):
       </Label>
