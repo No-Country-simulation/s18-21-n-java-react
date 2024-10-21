@@ -30,7 +30,7 @@ public class AuthServiceImp implements AuthService {
         SecurityContextHolder.getContext().setAuthentication(auth);
        User user= (User) auth.getPrincipal();
         String token = jwtTokenService.getToken(user);
-        return new AuthResponse(token);
+        return new AuthResponse(token, user.getId());
     }
 
 
