@@ -2,8 +2,13 @@ import { z } from "zod";
 
 export const loginSchema = z.object({
   email: z.string().email({ message: "Correo no válido" }),
-  password: z.string(),
+  password: z.string().min(8, {message: "Contraseña incorrecta"}),
 });
+
+export const verificationSchema = z.object({
+  email: z.string().email({message: "Correo no válido"}),
+  code: z.string().min(1, {message: "Ingresa el código de verificación"}),
+})
 
 export const signUpSchema = z
   .object({
