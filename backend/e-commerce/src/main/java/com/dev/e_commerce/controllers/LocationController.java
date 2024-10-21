@@ -87,7 +87,7 @@ public class LocationController {
     public ResponseEntity<ApiResponseDto<LocationResponseDto>> findLocationById(@PathVariable @Parameter(description = "find Location by Id",required = true) Long location_id){
             try{
                 Optional<LocationResponseDto> location = this.locationService.findById(location_id);
-                  LocationResponseDto locationResponseDto = location.map(locationMapper::toLocationResponseDto).get();
+                  LocationResponseDto locationResponseDto = new LocationResponseDto(location);
                 ApiResponseDto<LocationResponseDto> response = new ApiResponseDto<>(true, "Location found", null);
                 return ResponseEntity.ok(response);
             }catch (Exception e){
