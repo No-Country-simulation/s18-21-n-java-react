@@ -10,6 +10,8 @@ import com.dev.e_commerce.services.interfaces.OrderService;
 import com.dev.e_commerce.services.interfaces.ProductService;
 import org.mapstruct.*;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface DetailsMapper {
   @Mapping(target = "product", source = "productId")
@@ -20,6 +22,8 @@ public interface DetailsMapper {
   @Mapping(target = "productId", source = "product.id")
   @Mapping(target = "sellerId", source = "seller.id")
   DetailsOrderRes entityToRes(DetailsOrder detailsOrder);
+
+  List<DetailsOrderRes> listEntityToRes(List<DetailsOrder> detailsOrders);
 
   @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
   @Mapping(target = "id", ignore = true)
