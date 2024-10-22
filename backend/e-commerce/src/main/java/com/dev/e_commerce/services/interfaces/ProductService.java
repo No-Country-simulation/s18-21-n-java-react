@@ -11,11 +11,17 @@ import java.util.Optional;
 public interface ProductService {
 
 
-    Page<Product> listProduct(int page, int size);
-    Product guardarProducto(Product product);
-    Optional<ProductResponseDTO> buscarProducto(long productId);
-void modificarProducto(ProductRequestDto productRequestDto, long productId);
-    void EliminarProducto (long productId);
-    long countTotalProducts();
+  Page<Product> listProduct(int page, int size);
 
+  Product guardarProducto(Product product);
+
+  Optional<ProductResponseDTO> buscarProducto(long productId);
+
+  void modificarProducto(ProductRequestDto productRequestDto, long productId);
+
+  void EliminarProducto(long productId);
+
+  long countTotalProducts();
+
+  Product getById(Long id);
 }

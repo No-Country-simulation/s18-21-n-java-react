@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -20,10 +21,6 @@ public class Order {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "seller_id", nullable = false)
-    private Client seller;
-
-    @ManyToOne
     @JoinColumn(name = "client_id", nullable = false)
     private Client client;
 
@@ -36,4 +33,9 @@ public class Order {
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<DetailsOrder> detailsOrders;  // Relación con detalles de la orden
+
+    @PrePersist
+    public void onCreate(){
+        this.date = new Date();
+    }
 }
