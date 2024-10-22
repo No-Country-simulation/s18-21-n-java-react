@@ -5,4 +5,5 @@ import com.dev.e_commerce.dtos.response.LocationResponseDto;
 import com.dev.e_commerce.models.Location;
 
 public interface LocationService extends ServiceGeneric<Location, LocationRequestDto, LocationResponseDto>{
+  Location getById(Long id);
 }

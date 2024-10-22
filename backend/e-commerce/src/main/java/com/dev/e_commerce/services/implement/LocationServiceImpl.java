@@ -2,6 +2,7 @@ package com.dev.e_commerce.services.implement;
 
 import com.dev.e_commerce.dtos.request.LocationRequestDto;
 import com.dev.e_commerce.dtos.response.LocationResponseDto;
+import com.dev.e_commerce.exceptions.ApplicationException;
 import com.dev.e_commerce.mappers.LocationMapper;
 import com.dev.e_commerce.models.Location;
 import com.dev.e_commerce.repositories.LocationRepository;
@@ -29,7 +30,7 @@ public class LocationServiceImpl implements LocationService {
     @Override
     public LocationResponseDto save(LocationRequestDto requestDTO) {
         Location location = new Location();
-        location.setAddress(requestDTO.adress());
+        location.setAddress(requestDTO.address());
         location.setCity(requestDTO.city());
         location.setCountry(requestDTO.country());
         location = locationRepository.save(location);
@@ -54,5 +55,11 @@ public class LocationServiceImpl implements LocationService {
     @Override
     public void deleteById(Long id) {
         locationRepository.deleteById(id);
+    }
+
+    @Override
+    public Location getById(Long id) {
+        return this.locationRepository.findById(id)
+                .orElseThrow(()-> new ApplicationException("Location not found, id:"+id));
     }
 }
