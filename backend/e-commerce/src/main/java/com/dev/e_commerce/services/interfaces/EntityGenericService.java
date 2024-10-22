@@ -1,7 +1,5 @@
 package com.dev.e_commerce.services.interfaces;
 
-import java.util.Optional;
-
 public interface EntityGenericService<T> {
   T save(T entity);
 

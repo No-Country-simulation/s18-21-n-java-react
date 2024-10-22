@@ -8,7 +8,6 @@ import com.dev.e_commerce.dtos.response.DetailsOrderRes;
 import com.dev.e_commerce.mappers.DetailsMapper;
 import com.dev.e_commerce.models.DetailsOrder;
 import com.dev.e_commerce.services.interfaces.DetailsService;
-import com.dev.e_commerce.services.interfaces.OrderService;
 import com.dev.e_commerce.services.interfaces.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

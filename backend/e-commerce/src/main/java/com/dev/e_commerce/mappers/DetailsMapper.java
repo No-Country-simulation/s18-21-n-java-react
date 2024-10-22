@@ -2,7 +2,6 @@ package com.dev.e_commerce.mappers;
 
 import com.dev.e_commerce.dtos.request.DetailsOrderReq;
 import com.dev.e_commerce.dtos.response.DetailsOrderRes;
-import com.dev.e_commerce.exceptions.ApplicationException;
 import com.dev.e_commerce.models.DetailsOrder;
 import com.dev.e_commerce.models.Order;
 import com.dev.e_commerce.models.Product;

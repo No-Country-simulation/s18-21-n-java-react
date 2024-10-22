@@ -4,7 +4,6 @@ import com.dev.e_commerce.models.DetailsOrder;
 import com.dev.e_commerce.models.Order;
 import com.dev.e_commerce.repositories.OrderRepository;
 import com.dev.e_commerce.services.interfaces.AuthService;
-import com.dev.e_commerce.services.interfaces.ClientService;
 import com.dev.e_commerce.services.interfaces.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
