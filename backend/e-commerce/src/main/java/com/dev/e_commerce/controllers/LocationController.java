@@ -17,6 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -63,30 +64,35 @@ public class LocationController {
 
   }
 
-  @Operation(
-          description = "Get location by id",
-          summary = "Get location by id",
-          responses = {
-                  @ApiResponse(
-                          responseCode = "200",
-                          description = "Location retrieved successfully",
-                          content = @Content(
-                                  mediaType = "application/json",
-                                  schema = @Schema(implementation = ApiResponseDto.class)
-                          )
-                  )
-          }
-  )
-  @GetMapping("/{location_id}")
-  public ResponseEntity<ApiResponseDto<LocationResponseDto>> findLocationById(@PathVariable @Parameter(description = "find Location by Id", required = true) Long location_id) {
-    try {
-      Optional<LocationResponseDto> location = this.locationService.findById(location_id);
-      ApiResponseDto<LocationResponseDto> response = new ApiResponseDto<>(true, "Location found", location.get());
-      return ResponseEntity.ok(response);
-    } catch (Exception e) {
-      ApiResponseDto<LocationResponseDto> errorResponse = new ApiResponseDto<>(false, "Location not found", null);
-      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
-    }
+    @Operation(
+            description = "Get location by id",
+            summary = "Get location by id",
+            responses = {
+                    @ApiResponse(
+                            responseCode= "200",
+                            description = "Location retrieved successfully",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema =  @Schema(implementation = ApiResponseDto.class)
+                            )
+                    )
+
+
+            }
+
+
+    )
+    @GetMapping("/{location_id}")
+    public ResponseEntity<ApiResponseDto<LocationResponseDto>> findLocationById(@PathVariable @Parameter(description = "find Location by Id",required = true) Long location_id){
+            try{
+                Optional<LocationResponseDto> location = this.locationService.findById(location_id);
+                  LocationResponseDto locationResponseDto = new LocationResponseDto(location);
+                ApiResponseDto<LocationResponseDto> response = new ApiResponseDto<>(true, "Location found", null);
+                return ResponseEntity.ok(response);
+            }catch (Exception e){
+                ApiResponseDto<LocationResponseDto> errorResponse = new ApiResponseDto<>(false, "Location not found", null);
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
+            }
 
 
   }
