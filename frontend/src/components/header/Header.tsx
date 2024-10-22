@@ -26,7 +26,7 @@ export const Header = () => {
 
         {/* Iconos de carrito y sesión */}
         <div className="flex items-center space-x-4">
-          <Link href="../../CartPage/CartPage.tsx" className="text-2xl">{/*Link para ir al carrito*/}
+          <Link href="../../CartPage/Cart.tsx" className="text-2xl">{/*Link para ir al carrito*/}
             <IoCartOutline />
           </Link>
           <Link href="/login" className="text-2xl">
