@@ -54,6 +54,7 @@ public class ProductController {
 
   // Endpoint para guardar producto
   @PostMapping(consumes = "multipart/form-data")
+  @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Form-data")
   public ResponseEntity<ApiResponseDto<ProductResponseDTO>> saveProduct(
           @Validated @ModelAttribute ProductRequestDto productRequestDto) {
     Product product = productMapper.toEntity(productRequestDto, cloudinaryService);
