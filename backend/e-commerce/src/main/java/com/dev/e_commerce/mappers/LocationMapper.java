@@ -16,4 +16,6 @@ public interface  LocationMapper {
     @Mapping(target = "id", ignore = true)
     Location CLientToLocation(ClientRequestDto clientRequestDto);
 
+    LocationRequestDto toLocationRequestDto(Location location);
+    Location formLocationResponseDtoToLocation(LocationResponseDto locationResponseDto);
 }

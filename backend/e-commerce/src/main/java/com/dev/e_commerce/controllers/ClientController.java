@@ -2,7 +2,9 @@ package com.dev.e_commerce.controllers;
 
 import com.dev.e_commerce.dtos.ApiResponseDto;
 import com.dev.e_commerce.dtos.request.ClientRequestDto;
+import com.dev.e_commerce.dtos.request.LocationRequestDto;
 import com.dev.e_commerce.dtos.response.ClientResponseDto;
+import com.dev.e_commerce.dtos.response.LocationResponseDto;
 import com.dev.e_commerce.mappers.ClientMapper;
 import com.dev.e_commerce.mappers.LocationMapper;
 import com.dev.e_commerce.models.Client;
@@ -59,8 +61,12 @@ public class ClientController {
           schema = @Schema(implementation = ClientRequestDto.class)) ClientRequestDto clientRequestDto) {
 
     Location newLocation = this.locationMapper.CLientToLocation(clientRequestDto);
+    LocationRequestDto locationRequestDto = locationMapper.toLocationRequestDto(newLocation);
+    LocationResponseDto locationResponse= locationMapper.toLocationResponseDto(newLocation);
 
-    newLocation = this.locationService.save(newLocation);
+    locationResponse = this.locationService.save(locationRequestDto);
+
+    newLocation = this.locationMapper.formLocationResponseDtoToLocation(locationResponse);
 
     Client client = clientMapper.toClient(clientRequestDto);
     client.setLocation(newLocation);

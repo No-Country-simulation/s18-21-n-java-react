@@ -15,4 +15,6 @@ public record LocationResponseDto(
     public LocationResponseDto(LocationResponseDto locationResponseDto) {
         this( locationResponseDto.country,locationResponseDto.city,locationResponseDto.adress );
     }
+
+
 }
