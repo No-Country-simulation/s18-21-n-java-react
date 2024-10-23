@@ -1,4 +1,4 @@
-INSERT INTO `ecommerce`.`user`
+INSERT INTO ${db_name}.`user`
 (`user_type`, `id`, `created_at`, `email`, `is_enabled`, `lastname`, `name`, `password`, `photo_url`, `role`, `verification_code`)
 VALUES
 ('User', 1, '2024-10-01', 'prueba01@gmail.com', true, 'Garcia', 'Carlos', '$2a$10$i0vxx9r/4pVJclqjeQa1Fux00sVWs1wiNNHYdbizTv9zKCoYPdS3.', 'https://example.com/photo1.jpg', 'CLIENT', 'ver_code_1'),
@@ -12,7 +12,7 @@ VALUES
 ('User', 9, '2024-10-09', 'prueba09@gmail.com', true, 'Ramirez', 'Miguel', '$2a$10$i0vxx9r/4pVJclqjeQa1Fux00sVWs1wiNNHYdbizTv9zKCoYPdS3.', 'https://example.com/photo9.jpg', 'CLIENT', 'ver_code_9'),
 ('User', 10, '2024-10-10', 'prueba10@gmail.com', true, 'Vargas', 'Lucia', '$2a$10$i0vxx9r/4pVJclqjeQa1Fux00sVWs1wiNNHYdbizTv9zKCoYPdS3.', 'https://example.com/photo10.jpg', 'CLIENT', 'ver_code_10');
 
-INSERT INTO `ecommerce`.`location`
+INSERT INTO ${db_name}.`location`
 (`id`, `address`, `city`, `country`)
 VALUES
 (1, '123 Main St', 'New York', 'USA'),
@@ -26,7 +26,7 @@ VALUES
 (9, '606 Redwood Dr', 'Denver', 'USA'),
 (10, '707 Willow St', 'Dallas', 'USA');
 
-INSERT INTO `ecommerce`.`client`
+INSERT INTO ${db_name}.`client`
 (`birth_date`, `document_identification`, `phone`, `user_id`, `location_id`)
 VALUES
 ('1990-05-15', 'ID1234567890', '555-1234', 1, 1),
@@ -40,7 +40,7 @@ VALUES
 ('1989-09-08', 'ID9012345678', '555-9012', 9, 9),
 ('1993-02-17', 'ID0123456789', '555-0123', 10, 10);
 
-INSERT INTO `ecommerce`.`product`
+INSERT INTO ${db_name}.`product`
 (`id`, `brand`, `category`, `description`, `name`, `photo_url`, `price`, `short_description`, `stock`, `seller_id`)
 VALUES
 (1, 'Apple', 'TECNOLOGIA', 'iPhone 14 with A15 Bionic chip and 128GB storage.', 'iPhone 14', 'https://example.com/iphone14.jpg', 999.99, 'Latest iPhone model with 128GB storage.', 50, 1),
