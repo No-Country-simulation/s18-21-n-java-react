@@ -1,5 +1,5 @@
 import ShoppingCartBreadcrumb from "@/components/Breadcrumb/Breadcrumb";
-import CartItem from "@/components/CartItem/CartItem"; // Cambiado
+import CartItem from "@/components/CartItem/CartItem"; 
 import CartSummary from "@/components/CartSummary/CartSummary";
 import ContinueButton from "@/components/ContinueButton/ContinueButton";
 
@@ -15,7 +15,7 @@ export default function CartPage() {
       <ShoppingCartBreadcrumb />
       <div className="space-y-4">
         {products.map((product, index) => (
-          <CartItem key={index} {...product} /> // Cambiado
+          <CartItem key={index} {...product} /> 
         ))}
       </div>
       <CartSummary totalItems={products.length} subtotal={products.reduce((acc, p) => acc + p.price, 0)} shippingCost={500} />
