@@ -1,5 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `ecommerce`;
-USE `ecommerce`;
+USE ${db_name};
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
