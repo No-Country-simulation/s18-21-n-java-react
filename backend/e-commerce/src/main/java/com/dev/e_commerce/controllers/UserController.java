@@ -30,9 +30,11 @@ public class UserController {
     }
 
 
-    @PostMapping("/register")
-    @Operation(summary = "Registra un usuario")
-    public ResponseEntity<ApiResponseDto<UserResponseDto>> save(@RequestBody @Valid UserRequestDto requestDto) {
+    @Operation(summary = "Registra un usuario", description = "")
+    @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "form-data")
+    @PostMapping(value = "/register", consumes = "multipart/form-data")
+    public ResponseEntity<ApiResponseDto<UserResponseDto>> save(
+            @Valid @ModelAttribute UserRequestDto requestDto) {
 
         UserResponseDto responseDto = userService.save(requestDto);
         if (responseDto == null) {
@@ -41,6 +43,7 @@ public class UserController {
         return new ResponseEntity<>(new ApiResponseDto<>(true, "User has been created " +
                 "please verify your email", responseDto), HttpStatus.CREATED);
     }
+
     @Operation(summary = "Verifica el código enviado")
     @PostMapping("/verifyCode")
     public ResponseEntity<ApiResponseDto<String>> verifyCode(@RequestParam String email, @RequestParam String codigo) {
@@ -77,9 +80,11 @@ public class UserController {
         }
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping(value = "/{id}", consumes = "multipart/form-data")
     @Operation(summary = "Actualiza un usuario")
-    public ResponseEntity<ApiResponseDto<UserResponseDto>> updateUser(@PathVariable Long id, @RequestBody UserRequestDto requestDto) {
+    @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "form-data")
+    public ResponseEntity<ApiResponseDto<UserResponseDto>> updateUser(@PathVariable Long id,
+                                                                      @ModelAttribute UserRequestDto requestDto) {
         Optional<UserResponseDto> user = userService.findById(id);
         if (user.isPresent()) {
             userService.updateUser(requestDto,id);

@@ -6,6 +6,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import org.springframework.web.multipart.MultipartFile;
 
 public record UserRequestDto(
 
@@ -19,7 +20,7 @@ public record UserRequestDto(
         @NotBlank(message = "Password cannot be empty")
         @Size(min = 6, message = "Password must be at least 6 characters long")
         String password,
-        String photoUrl,
+        MultipartFile photo,
         @Enumerated(EnumType.STRING)
         Role role
 

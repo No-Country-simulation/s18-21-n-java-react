@@ -85,6 +85,12 @@ public class ProductInterfacesImpl implements ProductService {
     return productRepository.count();
   }
 
+  @Override
+  public Product getById(Long id) {
+    return this.productRepository.findById(id)
+            .orElseThrow(()-> new ApplicationException("Product not found, id"+id));
+  }
+
 }
 
 

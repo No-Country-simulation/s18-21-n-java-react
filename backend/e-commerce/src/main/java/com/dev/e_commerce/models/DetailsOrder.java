@@ -4,12 +4,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class DetailsOrder {
 
     @Id
@@ -23,6 +25,10 @@ public class DetailsOrder {
     @ManyToOne
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;  //RELACION CON EL PRODUCTO
+
+    @ManyToOne
+    @JoinColumn(name = "seller_id", nullable = false)
+    private Client seller;
 
     private Integer quantity;
 

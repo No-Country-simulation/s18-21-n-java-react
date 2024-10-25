@@ -37,7 +37,7 @@ public class User implements UserDetails {
 
     private String photoUrl;
 
-    private Boolean isEnabled= false;
+    private Boolean isEnabled = false;
 
     private String verificationCode;
 
@@ -78,7 +78,9 @@ public class User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
+
         return this.isEnabled;
      //UserDetails.super.isEnabled();
+
     }
 }
