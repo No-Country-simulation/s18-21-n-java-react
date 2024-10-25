@@ -38,6 +38,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     return null;
   }
 
+
   @Override
   protected void doFilterInternal(HttpServletRequest request,
                                   HttpServletResponse response,
