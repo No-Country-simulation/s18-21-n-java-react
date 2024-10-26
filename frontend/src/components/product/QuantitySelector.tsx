@@ -1,55 +1,34 @@
-"use client"; // Asegúrate de que este componente se ejecute en el lado del cliente
+"use client";
 
-import React, { useState } from 'react';
+import { Button } from "@/components/ui/button";
+import { useCartStore } from "@/store/cartStore";
+import { Product } from "@/lib/types/productInterface";
 
-// Definición de las propiedades que recibe el componente
 interface QuantitySelectorProps {
-  initialQuantity?: number; // Cantidad inicial
-  onQuantityChange: (newQuantity: number) => void; // Función callback para manejar cambios
+  product: Product;
 }
 
-// Componente de selección de cantidad
-const QuantitySelector: React.FC<QuantitySelectorProps> = ({
-  initialQuantity = 1,
-  onQuantityChange, 
-}) => {
-  // Estado interno para la cantidad actual
-  const [quantity, setQuantity] = useState(initialQuantity);
+function QuantitySelector({ product }: QuantitySelectorProps) {
+  const items = useCartStore((state) => state.items);
+  const increaseQty = useCartStore((state) => state.increaseQty);
+  const decreaseQty = useCartStore((state) => state.decreaseQty);
+  const item = items.find(item => item.idProducto === product.idProducto);
 
-  // Función para aumentar la cantidad
-  const increaseQuantity = () => {
-    const newQuantity = quantity + 1; 
-    setQuantity(newQuantity); 
-    onQuantityChange(newQuantity); 
-  };
-
-  // Función para disminuir la cantidad
-  const decreaseQuantity = () => {
-    if (quantity > 1) { // Asegúrate de que la cantidad no sea menor que 1
-      const newQuantity = quantity - 1; 
-      setQuantity(newQuantity); 
-      onQuantityChange(newQuantity); 
-    }
-  };
-
-  return (
+  if (item) return (
     <div className="flex items-center mt-4">
-      <button 
-        className="px-2 py-1 border rounded" 
-        onClick={decreaseQuantity}
-        disabled={quantity <= 1} // Deshabilitar el botón si la cantidad es 1
+      <button
+        className="px-2 py-1 border rounded"
+        onClick={() => decreaseQty(product)}
       >
-        -
+        –
       </button>
-      <span className="mx-2">{quantity}</span> {/* Mostrar la cantidad actual */}
-      <button 
-        className="px-2 py-1 border rounded" 
-        onClick={increaseQuantity}
-      >
+      <span className="mx-2">{item.quantity}</span>{" "}
+      <button className="px-2 py-1 border rounded" onClick={() => increaseQty(product)}>
         +
       </button>
     </div>
   );
-};
+  return (<Button className="mt-4 w-full" onClick={() => increaseQty(product)}>Agregar al Carrito</Button>)
+}
 
 export default QuantitySelector;

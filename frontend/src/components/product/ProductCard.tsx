@@ -1,29 +1,17 @@
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import QuantitySelector from "./QuantitySelector"; // Importa el nuevo componente
-
-interface Product {
-  image: string;
-  name: string;
-  description: string;
-  price: number;
-}
+import Image from "next/image"
+import QuantitySelector from "./QuantitySelector";
+import { Product } from "@/lib/types/productInterface";
 
 interface ProductCardProps {
   product: Product;
-  showQuantitySelector?: boolean; // Nueva prop para controlar el selector de cantidad
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product, showQuantitySelector = false }) => {
-  const handleQuantityChange = (newQuantity: number) => {
-    console.log(`Cantidad de ${product.name} actualizada a:`, newQuantity);
-  };
-
+const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <div className="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow flex flex-col items-center">
       <div className="w-full h-48 relative">
         <Image
-          src={product.image}
+          src={product.photoUrl}
           alt={product.name}
           layout="fill"
           objectFit="cover"
@@ -35,12 +23,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, showQuantitySelector
         <p className="text-gray-600 text-sm my-2">{product.description}</p>
         <p className="text-lg font-bold text-gray-900">${product.price}</p>
 
-        {/* Mostrar selector de cantidad solo si showQuantitySelector es true */}
-        {showQuantitySelector && (
-          <QuantitySelector initialQuantity={1} onQuantityChange={handleQuantityChange} />
-        )}
-
-        <Button className="mt-4 w-full">{showQuantitySelector ? "Eliminar del carrito" : "Agregar al Carrito"}</Button>
+        <QuantitySelector product={product}/>
       </div>
     </div>
   );
