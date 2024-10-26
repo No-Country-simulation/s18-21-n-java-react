@@ -13,7 +13,7 @@ export const Menu = () => {
         className="w-full flex justify-center items-center"
       >
         <NavigationMenuList className="flex flex-col sm:flex-row gap-4 sm:gap-8">
-          {/* Se utiliza un item por cada link */}
+          {/* Productos */}
           <NavigationMenuItem>
             <NavigationMenuLink
               href="/products"
@@ -22,6 +22,8 @@ export const Menu = () => {
               Productos
             </NavigationMenuLink>
           </NavigationMenuItem>
+
+          {/* Categorias */}
           <NavigationMenuItem>
             <NavigationMenuLink
               href="/categories"
@@ -30,6 +32,8 @@ export const Menu = () => {
               Categorias
             </NavigationMenuLink>
           </NavigationMenuItem>
+
+          {/* Ofertas del mes */}
           <NavigationMenuItem>
             <NavigationMenuLink
               href="/offers"
@@ -38,6 +42,8 @@ export const Menu = () => {
               Ofertas del mes
             </NavigationMenuLink>
           </NavigationMenuItem>
+
+          {/* Nosotros */}
           <NavigationMenuItem>
             <NavigationMenuLink
               href="/about"
@@ -46,6 +52,8 @@ export const Menu = () => {
               Nosotros
             </NavigationMenuLink>
           </NavigationMenuItem>
+
+          {/* Ayuda */}
           <NavigationMenuItem>
             <NavigationMenuLink
               href="/help"

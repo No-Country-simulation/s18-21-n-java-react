@@ -26,10 +26,11 @@ export const Header = () => {
 
         {/* Iconos de carrito y sesión */}
         <div className="flex items-center space-x-4">
-          <Link href="/CartPage" className="text-2xl">{/*Link para ir al carrito*/}
+          <Link href="/CartPage" className="text-2xl">
+            {/*Link para ir al carrito*/}
             <IoCartOutline />
           </Link>
-          <Link href="/login" className="text-2xl">
+          <Link href="/auth/login" className="text-2xl">
             <IoPerson />
           </Link>
         </div>
@@ -37,4 +38,3 @@ export const Header = () => {
     </header>
   );
 };
-
