@@ -20,7 +20,7 @@ function QuantitySelector({ product }: QuantitySelectorProps) {
         className="px-2 py-1 border rounded"
         onClick={() => decreaseQty(product)}
       >
-        -
+        –
       </button>
       <span className="mx-2">{item.quantity}</span>{" "}
       <button className="px-2 py-1 border rounded" onClick={() => increaseQty(product)}>

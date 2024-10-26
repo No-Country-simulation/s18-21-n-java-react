@@ -1,20 +1,20 @@
 import {create} from "zustand";
 import {Product} from "@/lib/types/productInterface";
 
-interface CartItem extends Product {
+export interface CartItemInterface extends Product {
   quantity: number,
 }
 
 interface CartStore {
-  items: CartItem[];
-  subTotal: number;
+  items: CartItemInterface[];
+  subtotal: number;
   increaseQty: (product: Product) => void;
   decreaseQty: (product: Product) => void;
 }
 
 export const useCartStore = create<CartStore>((set, get) => ({
   items: [],
-  get subTotal() {return get().items.reduce((subtotal, item) => subtotal + item.price*item.quantity, 0)},
+  get subtotal() {return get().items.reduce((subtotal, item) => subtotal + item.price*item.quantity, 0)},
   
   increaseQty(product) {
     set((state: CartStore) => {
