@@ -6,12 +6,28 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signUpSchema } from "@/lib/formValidations/authValidation";
 import { signup } from "@/services/authService";
+import { useToast } from "@/hooks/use-toast"
+import { useRouter } from "next/navigation";
 
 export default function SignUpPage() {
   const { register, handleSubmit } = useForm({resolver: zodResolver(signUpSchema)});
+  const { toast } = useToast();
+  const router = useRouter();
 
   function onRegister(data: object) {
-    signup(data);
+    signup(data)
+    .then(() => {toast({
+          title: "¡Registro exitoso!",
+          description: "Te hemos enviado un correo electrónico de verificación.",
+        });
+        router.push("/auth/verification");
+      })
+    .catch(() => toast({
+          variant: "destructive",
+          title: "¡Ocurrió un error!",
+          description: "Hubo un error procesando tu registro",
+        }));
+
   }
 
   return (
