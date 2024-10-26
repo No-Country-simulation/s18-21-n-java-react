@@ -1,16 +1,9 @@
-interface Address {
-  firstName?: string;
-  lastName?: string;
-  street: string;
-  num: number | "s/n";
-  neighborhood?: string;
-  city: string;
-  province: string;
-  postCode: number;
-}
+import {Address} from "@/lib/types/addressInterface";
 
-export const adressess: Address[] = [
+export const addresses: Address[] = [
   {
+    firstName: "John",
+    lastName: "Doe",
     street: "Altamirano",
     num: 94,
     province: "La Pampa",
@@ -18,6 +11,8 @@ export const adressess: Address[] = [
     postCode: 30840,
   },
   {
+    firstName: "John",
+    lastName: "Doe",
     street: "Arce",
     num: 996,
     province: "Tucumán",
@@ -25,6 +20,8 @@ export const adressess: Address[] = [
     postCode: 7918,
   },
   {
+    firstName: "John",
+    lastName: "Doe",
     street: "Emilia",
     num: 35,
     province: "Santa Cruz",
@@ -32,6 +29,8 @@ export const adressess: Address[] = [
     postCode: 66570,
   },
   {
+    firstName: "John",
+    lastName: "Doe",
     street: "Aragón",
     num: 341,
     province: "Mendoza",

@@ -12,15 +12,15 @@ export default function ShoppingCartBreadcrumb() {
     <Breadcrumb>
   <BreadcrumbList>
     <BreadcrumbItem>
-      <BreadcrumbLink href="/CartPage">carrito</BreadcrumbLink>
+      <BreadcrumbLink href="/CartPage">Carrito</BreadcrumbLink>
     </BreadcrumbItem>
     <BreadcrumbSeparator />
     <BreadcrumbItem>
-      <BreadcrumbLink href="/products">tus datos</BreadcrumbLink>
+      <BreadcrumbLink href="/checkout-address">Tus datos</BreadcrumbLink>
     </BreadcrumbItem>
     <BreadcrumbSeparator />
     <BreadcrumbItem>
-      <BreadcrumbLink href="/CartPage">pago</BreadcrumbLink>
+      <BreadcrumbLink href="/checkout-payment">Pago</BreadcrumbLink>
     </BreadcrumbItem>
     <BreadcrumbSeparator />
     <BreadcrumbItem>
