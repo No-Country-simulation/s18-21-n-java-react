@@ -1,9 +1,5 @@
 import ProductCard from './ProductCard';
-import {productList} from '@/lib/utils';
-
-
-
-
+import {productList} from "@/lib/fakeData/products";
 
 const ProductGrid: React.FC = () => {
   return (
