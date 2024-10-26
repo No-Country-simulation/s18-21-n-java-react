@@ -14,8 +14,7 @@ export const InifiniteScroll = () => {
              src={marca.url}
              alt={marca.name}
              fill
-             objectFit="fill"
-             className=' max-w-none p-4'
+             className=' max-w-none p-4 object-fill'
             />
         </div>
            ))}
@@ -28,8 +27,8 @@ export const InifiniteScroll = () => {
              src={marca.url}
              alt={marca.name}
              fill
-             objectFit="fill"
-             className=' max-w-none p-4'
+             
+             className=' max-w-none p-4 object-fill'
             />
         </div>
            ))}

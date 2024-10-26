@@ -1,19 +1,90 @@
+import { Product } from "@/interfaces/product.inteface";
 
 
-const url = 'https://deploy-smart-store.onrender.com/api/v1/products'
+const URL = 'https://deploy-smart-store.onrender.com/api/v1/products'
+const TOKEN = ''
 
+export const creatProduct = async (data: Product) =>{
 
-export const creatProduct = async (data) =>{
-
-    const res = await fetch(url, {
+    const res = await fetch(URL, {
         method: "POST",
         headers: {
           "content-type": "application/json",
+          "Authorization": `Bearer ${TOKEN}`
         },
         body: JSON.stringify(data),
     });
 
     console.log('res de la func ' + res)
+}
+
+
+export const getAllProducts = async () => {
+  try {
+    const res = await fetch(URL)
+    if (!res.status) {
+      throw new Error('Error en la petición: ' + res.status);
+    }
+    const data = await res.json()
+    return data.dataList
+    
+  } catch (error) {
+    console.log(error)
+  }
+
+}
+
+export const updateProduct = async (data: Product, id: string) => {
+  try {
+    const res = await fetch(URL+`${id}`, {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+          "Authorization": `Bearer ${TOKEN}`
+        },
+        body: JSON.stringify(data),
+    });
+    if (!res.status) {
+      throw new Error('Error en la petición: ' + res.status);
+    }else {
+      return res 
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const getProductById = async (data: Product, id: string) => {
+  try {
+    const res = await fetch(URL+`${id}`)
+    if (!res.status) {
+      throw new Error('Error en la petición: ' + res.status);
+    }
+    const data = await res.json()
+    return data.data
+    
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const deleteProductById = async ( id: string) => {
+  try {
+    const res = await fetch(URL+`${id}`, {
+      method: "DELETE", 
+      headers: {
+        "content-type": "application/json",
+      },
+    });
+    if (!res.status) {
+      throw new Error('Error en la petición: ' + res.status);
+    }
+    //const data = await res.json()
+    return res
+    
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 /**

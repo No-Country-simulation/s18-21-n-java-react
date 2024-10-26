@@ -1,5 +1,5 @@
 import { ProductGrid } from "@/components";
-import { ProductForm } from "@/components/product/ProductForm";
+
 
 export default function Products() {
     return (
@@ -11,10 +11,7 @@ export default function Products() {
         <div className="w-3/4  bg-red-300">
         <h2 className="text-xl text-centerc">Todos nuestros productos</h2>
         <ProductGrid />
-        <div className="w-full flex justify-center">
-        <ProductForm/>
-        </div>
-       
+      
         </div>
       
       </div>
