@@ -64,7 +64,7 @@ export default function CheckoutPaymentPage() {
 
       {/* Botón para continuar */}
       <div className="flex justify-center mt-6 sm:justify-end">
-        <ContinueButton />
+        <ContinueButton>Continuar con el medio de pago</ContinueButton>
       </div>
     </div>
   );

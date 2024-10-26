@@ -103,7 +103,7 @@ export default function CheckoutConfirmPage() {
 
       {/* Botón Continuar */}
       <div className="flex justify-center mt-6 sm:justify-end">
-        <ContinueButton />
+        <ContinueButton >Continuar</ContinueButton>
       </div>
     </div>
   );

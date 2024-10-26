@@ -30,7 +30,9 @@ export default function ShoppingCartBreadcrumb() {
           <BreadcrumbLink
             href="/products"
             className={`${
-              currentPath === "/products" ? "font-bold text-indigo-600" : ""
+              currentPath === "/checkout-address"
+                ? "font-bold text-indigo-600"
+                : ""
             } hover:text-indigo-500 transition-colors`}
           >
             tus datos
