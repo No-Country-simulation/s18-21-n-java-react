@@ -1,20 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  
-      images: {
-        remotePatterns: [
-          {
-            protocol: "https",
-            hostname: "example.com",
-          },
-          {
-            protocol: "https",
-            hostname: "res.cloudinary.com",
-          },
-         
-         
-        ],
-      },
+  reactStrictMode: true,
+  images: {
+    domains: ["images.pexels.com", "via.placeholder.com","res.cloudinary.com","example.com"], // Agrega aquí los dominios permitidos
+  },
 };
 
 export default nextConfig;

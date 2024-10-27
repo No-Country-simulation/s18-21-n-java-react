@@ -1,9 +1,9 @@
 import { buildRequest } from "@/lib/helpers/buildRequests";
-const baseUrl = "http://localhost:8080/api/v1/auth/login";
+const baseUrl = "https://deploy-smart-store.onrender.com/api/v1";
 
 export async function signup(signupFields: object) {
   try {
-    const res = await fetch(baseUrl, buildRequest(signupFields));
+    const res = await fetch(`${baseUrl}/user/register`, buildRequest(signupFields));
     if (!res.ok) throw new Error(`Response not ok! ${res.status}: ${res.statusText}`);
     const data = res.json();
     return data;
@@ -15,7 +15,10 @@ export async function signup(signupFields: object) {
 
 export async function verifyEmail(verificationInputs: object) {
     try {
-    const res = await fetch(baseUrl, buildRequest(verificationInputs));
+    const res = await fetch(
+      `${baseUrl}/user/verifyCode`,
+      buildRequest(verificationInputs)
+    );
     if (!res.ok) throw new Error(`Response not ok! ${res.status}: ${res.statusText}`);
     const data = res.json();
     return data;
@@ -27,7 +30,10 @@ export async function verifyEmail(verificationInputs: object) {
 
 export async function login(loginFields: object) {
     try {
-      const res = await fetch(baseUrl, buildRequest(loginFields));
+      const res = await fetch(
+        `${baseUrl}/auth/login`,
+        buildRequest(loginFields)
+      );
       if (!res.ok)
         throw new Error(`Response not ok! ${res.status}: ${res.statusText}`);
       const data = res.json();
