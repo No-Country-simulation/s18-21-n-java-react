@@ -34,10 +34,10 @@ export default function ControlPanel() {
           <h2 className="text-xl text-center">Panel de Control </h2>
          <div className="flex">
 
-                <div className="w-1/4 bg-slate-400 flex items-center justify-center">
+                <div className="w-2/5 bg-slate-400 flex items-center justify-center">
                   <p > datos del usuario </p>
                 </div >
-                <div className="w-3/4  flex flex-col items-center">
+                <div className="w-3/5  flex flex-col items-center">
                     <p className="text-2xl my-4 ">Mis productos registrados</p>
 
                     <Dialog>

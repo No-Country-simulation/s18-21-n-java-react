@@ -14,37 +14,64 @@ import {
   } from "@/components/ui/form"
 import { Textarea } from "../ui/textarea"
 import { useForm } from "react-hook-form"
-//import { creatProduct } from "@/services/product.service"
+import { creatProduct } from "@/services/product.service"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { productSchema } from "@/lib/formValidations/productValidation"
-import { Product } from "@/interfaces/product.inteface"
+import { Prodocut, productSchema } from "@/lib/formValidations/productValidation"
+import { useEffect, useState } from "react"
+
+//import { NewProduct } from "@/interfaces/product.inteface"
+//import { Product } from "@/interfaces/product.inteface"
 
 
 
 export const ProductForm = () => {
 
-  const {register, handleSubmit, watch, formState: {errors}} =useForm<Product>({resolver: zodResolver(productSchema)})
+  const {register, handleSubmit, formState: {errors}} =useForm<Prodocut>({resolver: zodResolver(productSchema)})
+ const [message, setMessage] = useState('')
+ const [show, setShow] = useState(false)
 
- 
-  console.log(errors)
+
+ useEffect(() => {
+  const timeId = setTimeout(() => {
+    
+    setShow(false)
+  }, 3000)
+  return () => clearTimeout(timeId)
+}, [message]);
+
+
 
 const onSubmit = handleSubmit(async(data) =>{
-  console.log(watch)
-  //console.log(data)
-  /*const file = data.photo[0]
-  
-  const base64 = await convertFileToBase64(file);
-  console.log(base64)
-  data.photo = base64*/
-  data.clientId = 1
-  //data.price =  parseFloat(data.price) 
-  //data.stock = parseInt(data.stock)
-  console.log(data)
- // const base64 = await convertFileToBase64(data.photo)
 
+  try {
+    data.clientId = '1';
+    const formData = new FormData();
 
- //const response = await creatProduct(data)
-// console.log(response)
+    formData.append("name", data.name);
+    formData.append("price", data.price);
+    formData.append("description", data.description);
+    formData.append("brand", data.brand);
+    formData.append("photo", data.photo[0]);
+    formData.append("category", data.category);
+    formData.append("stock", data.stock);
+    formData.append("shortDescription", data.shortDescription);
+    formData.append("clientId", data.clientId);
+    
+    //console.log(errors)
+   
+       const res = await creatProduct(formData)
+       if(!res.status){
+        setMessage("hubo un error en la creacion")
+        setShow(true)
+       } else {
+        setMessage("Producto registrado exitosamente" )
+        setShow(true)
+       }
+   console.log(res)
+  }  catch (error) {
+    console.log(error)
+  }
+
 })
 
 
@@ -86,8 +113,8 @@ const onSubmit = handleSubmit(async(data) =>{
         <Label className="block pt-4 pb-1">
         Imagen
         </Label>
-        <Input className="block" type="text" {...register("photoUrl")} />
-        {errors.photoUrl?.message && <p className="text-xs text-red-700">{errors.photoUrl?.message}</p>}
+        <Input className="block" type="file" {...register("photo")} />
+        {errors.price?.message && <p className="text-xs text-red-700">{errors.price.message}</p>}
     </FormItem>
     <FormItem>
         <Label className="block pt-4 pb-1">
@@ -118,9 +145,11 @@ const onSubmit = handleSubmit(async(data) =>{
 
         <Button className="w-full my-8" type="submit">Crear producto</Button>
 
-        <div>
-          {JSON.stringify(watch(), null, 2)}
-        </div>
+        {
+          message && show && 
+          <p className="">{message}</p>
+        }
+
     </form>
   )
 }

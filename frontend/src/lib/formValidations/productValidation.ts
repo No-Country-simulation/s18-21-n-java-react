@@ -1,6 +1,6 @@
 import { z } from "zod";
-/*const MAX_PHOTO = 5000000
-const IMAGE_TYPES = ["image/webp", "image/jpeg", "image/jpg", "image/png"]*/
+const MAX_PHOTO = 5000000
+const IMAGE_TYPES = ["image/webp", "image/jpeg", "image/jpg", "image/png"]
 
 
 export const productSchema = z.object({
@@ -16,12 +16,9 @@ export const productSchema = z.object({
     brand: z.string().min(2,{
         message: 'La marca debe tener almenos 2 caracteres' 
     }),
-    photoUrl: z.string().url({ message: "Debe ser una URL válida" }).refine((url) => {
-        return /\.(jpg|jpeg|png|webp)$/i.test(url);
-      }, {
-        message: "Debe ser una URL de imagen válida (jpg, jpeg, png, webp)"
-      }),
-      category: z.string().min(4,{
+    photo: z.any().refine((file) => !(file?.size <= MAX_PHOTO), `Max image size is 5MB.`)
+    .refine((file) => !(IMAGE_TYPES.includes(file?.type)),"Only .jpg, .jpeg, .png and .webp formats are supported." ),
+    category: z.string().min(4,{
         message: 'La categoria debe tener almenos 4 caracteres'
     }),
     stock: z.string().refine(stock => !isNaN(parseFloat(stock)),{
@@ -30,7 +27,7 @@ export const productSchema = z.object({
     shortDescription: z.string().min(6, {
         message: 'La descripción debe tener almenos 6 caracteres'
     }),
-    clientId: z.number().optional()
+    clientId: z.string().refine(id => !isNaN(parseFloat(id))).optional()
 })
 
  export type Prodocut = z.infer<typeof productSchema>

@@ -1,27 +1,28 @@
 import { Product } from "@/interfaces/product.inteface";
+import { Prodocut } from "@/lib/formValidations/productValidation";
 
 
 const URL = 'https://deploy-smart-store.onrender.com/api/v1/products'
-const TOKEN = ''
+const TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcnVlYmEwMUBnbWFpbC5jb20iLCJpYXQiOjE3Mjk5NTQ4NzAsImV4cCI6MTczMDA1OTI3MH0.wI-BRbJk9v2f_a7-LWQvbFBLzkjYe3mPOAn-cucOLRU'
 
-export const creatProduct = async (data: Product) =>{
+export const creatProduct = async (data) =>{
 
     const res = await fetch(URL, {
         method: "POST",
         headers: {
-          "content-type": "application/json",
           "Authorization": `Bearer ${TOKEN}`
         },
-        body: JSON.stringify(data),
+        body: data,
     });
-
     console.log('res de la func ' + res)
+      return await res.json()
+    
 }
 
 
 export const getAllProducts = async () => {
   try {
-    const res = await fetch(URL)
+    const res = await fetch(URL+'?page=2')
     if (!res.status) {
       throw new Error('Error en la petición: ' + res.status);
     }
