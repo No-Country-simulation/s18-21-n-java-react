@@ -1,10 +1,11 @@
-export function buildRequest(formInputs: object): RequestInit {
+export function buildUserSignupRequest(formInputs: object): RequestInit {
+  const formData = new FormData();
+  Object.entries(formInputs).forEach(field => formData.append(field[0], field[1]));
   return {
     method: "POST",
-    credentials: "include",
     headers: {
-      "content-type": "application/json",
+      "content-type": "multipart/form-data",
     },
-    body: JSON.stringify(formInputs),
+    body: formData,
   };
 }
