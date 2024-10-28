@@ -54,4 +54,8 @@ public class AuthServiceImp implements AuthService {
             .orElseThrow(() -> new ApplicationException("Client not found, id: " + authUser.getId()));
   }
 
+  @Override
+  public User getAuthUser() {
+    return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+  }
 }

@@ -21,7 +21,7 @@ public class CloudinaryServiceImpl implements CloudinaryService {
   @Override
   public String uploadImage(MultipartFile file) {
     if (file.isEmpty()) {
-      throw new IllegalArgumentException("File is empty");
+      return null;
     }
 
     try {

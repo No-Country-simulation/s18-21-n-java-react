@@ -15,6 +15,12 @@ import lombok.Setter;
 @Table(name = "location")
 public class Location {
 
+    public Location(String country, String city, String address) {
+        this.country = country;
+        this.city = city;
+        this.address = address;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
