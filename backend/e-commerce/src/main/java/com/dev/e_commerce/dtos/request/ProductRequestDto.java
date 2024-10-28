@@ -5,7 +5,6 @@ import jakarta.validation.constraints.NotNull;
 import org.springframework.web.multipart.MultipartFile;
 
 public record ProductRequestDto(
-
         @NotBlank(message = "Name Product cannot be empty")
         String name,
         @NotNull(message = "price Product cannot be empty")
