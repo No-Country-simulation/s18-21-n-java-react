@@ -1,8 +1,5 @@
 "use client"
  
-/*import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"*/
 import { Button } from "../ui/button"
 import { Label } from "../ui/label"
 import { Input } from "../ui/input"
@@ -16,19 +13,22 @@ import { Textarea } from "../ui/textarea"
 import { useForm } from "react-hook-form"
 import { creatProduct } from "@/services/product.service"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Prodocut, productSchema } from "@/lib/formValidations/productValidation"
+import { TypeZodProduct, productSchema } from "@/lib/formValidations/productValidation"
 import { useEffect, useState } from "react"
 
-//import { NewProduct } from "@/interfaces/product.inteface"
-//import { Product } from "@/interfaces/product.inteface"
+
 
 
 
 export const ProductForm = () => {
 
-  const {register, handleSubmit, formState: {errors}} =useForm<Prodocut>({resolver: zodResolver(productSchema)})
+  const {register, handleSubmit, formState: {errors}} =useForm<TypeZodProduct>({resolver: zodResolver(productSchema)})
  const [message, setMessage] = useState('')
  const [show, setShow] = useState(false)
+ const dataUser = localStorage.getItem('user')
+  const jsnUser = JSON.parse(dataUser || '')
+
+ 
 
 
  useEffect(() => {
@@ -44,7 +44,7 @@ export const ProductForm = () => {
 const onSubmit = handleSubmit(async(data) =>{
 
   try {
-    data.clientId = '1';
+    data.clientId = jsnUser.id.toString();
     const formData = new FormData();
 
     formData.append("name", data.name);
@@ -55,9 +55,10 @@ const onSubmit = handleSubmit(async(data) =>{
     formData.append("category", data.category);
     formData.append("stock", data.stock);
     formData.append("shortDescription", data.shortDescription);
-    formData.append("clientId", data.clientId);
-    
-    //console.log(errors)
+    if(data.clientId){
+      formData.append("clientId", data.clientId);
+    }
+
    
        const res = await creatProduct(formData)
        if(!res.status){
@@ -147,7 +148,8 @@ const onSubmit = handleSubmit(async(data) =>{
 
         {
           message && show && 
-          <p className="">{message}</p>
+          <p className="border p-1">{message}</p>
+        
         }
 
     </form>

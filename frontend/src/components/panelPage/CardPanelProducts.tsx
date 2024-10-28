@@ -2,13 +2,18 @@ import React from 'react'
 import Image from "next/image";
 import {FaEdit} from "react-icons/fa"
 import {MdDelete} from "react-icons/md"
-import { Product } from '@/interfaces/product.inteface';
-//import { Prodocut } from '@/lib/formValidations/productValidation';
+import { getProduct } from '@/interfaces/product.inteface';
+import { Dialog, DialogClose, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '../ui/dialog';
+
+import { UpdateProdcutForm } from './UpdateProductForm';
+import { Button } from '../ui/button';
+import { deleteProductById } from '@/services/product.service';
 
 
 
 
-export const CardPanelProducts = ({photoUrl, name, price, brand}: Product) => {
+
+export const CardPanelProducts = ({photoUrl, name, price, brand, id}: getProduct) => {
   return (
     <div className='w-full flex  rounded-2xl border shadow-md shadow-purple-300 hover:scale-110'>
 
@@ -34,12 +39,56 @@ export const CardPanelProducts = ({photoUrl, name, price, brand}: Product) => {
         </div>
     </div>
     <div className='w-1/6  flex flex-col items-center justify-center gap-8'>
-        <div>
-       
-            <FaEdit className='w-6 h-6 hover:text-green-400'/>
+        <div className=''>
+        
+        
+          
+            <Dialog>
+                    <DialogTrigger asChild>  
+                         <FaEdit className='w-6 h-6 hover:text-green-400'/>                  
+                    </DialogTrigger> 
+                    <DialogContent className="w-11/12 bg-slate-200 h-4/5 overflow-y-auto ">
+                       <DialogHeader>
+                        <DialogTitle>Actualizar producto</DialogTitle>
+                        </DialogHeader>
+                        <div className="w-full flex justify-center">
+                     <UpdateProdcutForm id={id}/>
+                     </div>
+                     </DialogContent>
+                    </Dialog>
+
+
+
+        
+        
         </div>
         <div>
-           <MdDelete className='h-8 w-8 text-red-800 hover:text-black'/>
+
+        <Dialog>
+                    <DialogTrigger asChild>  
+                        <MdDelete className='h-8 w-8 text-red-800 hover:text-black'/>
+                                   
+                    </DialogTrigger> 
+                    <DialogContent className="w-4/12 bg-slate-200 h-1/5 overflow-y-auto ">
+                       <DialogHeader>
+                        <DialogTitle>Seguro desea elminar este producto ?</DialogTitle>
+                        </DialogHeader>
+                        <div className=" flex  justify-center gap-8">
+                        <DialogClose asChild>
+                              <Button type="button" onClick={()=>deleteProductById(id.toString())} >
+                                 Si
+                             </Button>
+                             </DialogClose>
+                             <DialogClose asChild>
+            <Button type="button" variant="secondary">
+              No
+            </Button>
+            </DialogClose>
+                      </div>
+                     </DialogContent>
+                    </Dialog>
+
+         
         </div>
     </div>
     </div>

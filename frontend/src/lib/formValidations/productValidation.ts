@@ -4,6 +4,7 @@ const IMAGE_TYPES = ["image/webp", "image/jpeg", "image/jpg", "image/png"]
 
 
 export const productSchema = z.object({
+    id: z.string().optional(),
     name: z.string().min(3,{
         message: 'El nombre debe tener almenos 3 caracteres'
     }),
@@ -16,6 +17,7 @@ export const productSchema = z.object({
     brand: z.string().min(2,{
         message: 'La marca debe tener almenos 2 caracteres' 
     }),
+    photoUrl: z.string().optional(),
     photo: z.any().refine((file) => !(file?.size <= MAX_PHOTO), `Max image size is 5MB.`)
     .refine((file) => !(IMAGE_TYPES.includes(file?.type)),"Only .jpg, .jpeg, .png and .webp formats are supported." ),
     category: z.string().min(4,{
@@ -30,7 +32,7 @@ export const productSchema = z.object({
     clientId: z.string().refine(id => !isNaN(parseFloat(id))).optional()
 })
 
- export type Prodocut = z.infer<typeof productSchema>
+ export type TypeZodProduct = z.infer<typeof productSchema>
 
 /**
  *  photo: z.any().refine(file => file?.size <= MAX_PHOTO,'Tamaño de archivo permitido 5MB'

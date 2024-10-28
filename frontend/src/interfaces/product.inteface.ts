@@ -1,5 +1,6 @@
 
-export interface Product {
+export interface getProduct {
+    id: number,
     name: string,
     price: number,
     description: string,
@@ -11,7 +12,7 @@ export interface Product {
     clientId: number
 }
 
-export interface NewProduct {
+export interface postProduct {
     name: string,
     price: number,
     description: string,

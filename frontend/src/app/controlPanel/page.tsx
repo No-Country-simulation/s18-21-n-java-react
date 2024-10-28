@@ -3,18 +3,17 @@ import { CardPanelProducts } from "@/components/panelPage/CardPanelProducts";
 import { ProductForm } from "@/components/panelPage/NewProductForm";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Product } from "@/interfaces/product.inteface";
+import { getProduct } from "@/interfaces/product.inteface";
 
 import { getAllProducts } from "@/services/product.service";
 import { useEffect, useState } from "react";
 
 export default function ControlPanel() {
- const [dataProduts, setDataProducts] = useState<Product[]>()
+ const [dataProduts, setDataProducts] = useState<getProduct[]>()
  useEffect(()=>{
   const fetchData = async () => {
     try {
-      const allProducts: Product[] = await getAllProducts()
-      console.log(allProducts)
+      const allProducts: getProduct[] = await getAllProducts()
      if(allProducts){
       setDataProducts(allProducts)
      } else {
@@ -31,7 +30,7 @@ export default function ControlPanel() {
 
     return ( 
         <div>
-          <h2 className="text-xl text-center">Panel de Control </h2>
+          <h2 className="text-5xl text-center my-6 font-bold">Panel de Control </h2>
          <div className="flex">
 
                 <div className="w-2/5 bg-slate-400 flex items-center justify-center">
