@@ -1,9 +1,9 @@
-import { buildUserSignupRequest } from "@/lib/helpers/buildRequests";
+import { buildUserSignupReq, buildUserLoginReq } from "@/lib/helpers/buildRequests";
 const baseUrl = "https://deploy-smart-store.onrender.com/api/v1";
 
 export async function signup(signupFields: object) {
   try {
-    const res = await fetch(`${baseUrl}/user/register`, buildUserSignupRequest(signupFields));
+    const res = await fetch(`${baseUrl}/user/register`, buildUserSignupReq(signupFields));
     if (!res.ok) throw new Error(`Response not ok! ${res.status}: ${res.statusText}`);
     const data = res.json();
     return data;
@@ -17,7 +17,7 @@ export async function verifyEmail(verificationInputs: object) {
     try {
     const res = await fetch(
       `${baseUrl}/user/verifyCode`,
-      // buildRequest(verificationInputs)
+      // buildUserLoginReq(verificationInputs)
     );
     console.log(verificationInputs);
     if (!res.ok) throw new Error(`Response not ok! ${res.status}: ${res.statusText}`);
@@ -33,9 +33,8 @@ export async function login(loginFields: object) {
     try {
       const res = await fetch(
         `${baseUrl}/auth/login`,
-        // buildRequest(loginFields)
+        buildUserLoginReq(loginFields)
       );
-      console.log(loginFields);
       if (!res.ok)
         throw new Error(`Response not ok! ${res.status}: ${res.statusText}`);
       const data = res.json();

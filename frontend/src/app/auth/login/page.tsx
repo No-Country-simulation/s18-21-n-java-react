@@ -7,15 +7,19 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema } from "@/lib/formValidations/authValidation";
 import { login } from "@/services/authService";
 import { useUserStore } from "@/store/userStore";
+import { useToast } from "@/hooks/use-toast";
 
 export default function LoginPage() {
   const { register, handleSubmit } = useForm({
     resolver: zodResolver(loginSchema),
   });
   const logUser = useUserStore((state) => state.logUser);
+  const { toast } = useToast();
 
   function onLogin(data: object) {
-    login(data).then((user) => logUser(user));
+    login(data).then((user) => {
+      logUser(user);
+    toast({title: "¡Sesión iniciada!"})});
   }
 
   return (
