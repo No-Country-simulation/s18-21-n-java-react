@@ -33,9 +33,9 @@ export default function RootLayout({
       >
         <Header />
         <Menu />
+        <Toaster />
         {children}
         <Footer />
-        <Toaster />
       </body>
     </html>
   );

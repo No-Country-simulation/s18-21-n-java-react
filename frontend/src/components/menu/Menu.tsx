@@ -1,9 +1,9 @@
 import {
   NavigationMenu,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
+import Link from "next/link";
 
 export const Menu = () => {
   return (
@@ -15,52 +15,52 @@ export const Menu = () => {
         <NavigationMenuList className="flex flex-col sm:flex-row gap-4 sm:gap-8">
           {/* Productos */}
           <NavigationMenuItem>
-            <NavigationMenuLink
+            <Link
               href="/products"
               className="text-base sm:text-lg font-medium text-gray-700 hover:text-primario focus:underline active:underline transition-all"
             >
               Productos
-            </NavigationMenuLink>
+            </Link>
           </NavigationMenuItem>
 
           {/* Categorias */}
           <NavigationMenuItem>
-            <NavigationMenuLink
+            <Link
               href="/categories"
               className="text-base sm:text-lg font-medium text-gray-700 hover:text-primario focus:underline active:underline transition-all"
             >
-              Categorias
-            </NavigationMenuLink>
+              Categorías
+            </Link>
           </NavigationMenuItem>
 
           {/* Ofertas del mes */}
           <NavigationMenuItem>
-            <NavigationMenuLink
+            <Link
               href="/offers"
               className="text-base sm:text-lg font-medium text-gray-700 hover:text-primario focus:underline active:underline transition-all"
             >
               Ofertas del mes
-            </NavigationMenuLink>
+            </Link>
           </NavigationMenuItem>
 
           {/* Nosotros */}
           <NavigationMenuItem>
-            <NavigationMenuLink
+            <Link
               href="/about"
               className="text-base sm:text-lg font-medium text-gray-700 hover:text-primario focus:underline active:underline transition-all"
             >
               Nosotros
-            </NavigationMenuLink>
+            </Link>
           </NavigationMenuItem>
 
           {/* Ayuda */}
           <NavigationMenuItem>
-            <NavigationMenuLink
+            <Link
               href="/help"
               className="text-base sm:text-lg font-medium text-secundario hover:text-primario focus:underline active:underline transition-all"
             >
               Ayuda
-            </NavigationMenuLink>
+            </Link>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
