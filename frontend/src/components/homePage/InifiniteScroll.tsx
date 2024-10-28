@@ -13,11 +13,10 @@ export const InifiniteScroll = () => {
             key={`${index}-marca`}
           >
             <Image
-              src={marca.url}
-              alt={marca.name}
-              fill
-              objectFit="fill"
-              className="max-w-none p-4"
+             src={marca.url}
+             alt={marca.name}
+             fill
+             className=' max-w-none p-4 object-fill'
             />
           </div>
         ))}
@@ -35,11 +34,11 @@ export const InifiniteScroll = () => {
             key={`${index}-marca-hidden`}
           >
             <Image
-              src={marca.url}
-              alt={marca.name}
-              fill
-              objectFit="fill"
-              className="max-w-none p-4"
+             src={marca.url}
+             alt={marca.name}
+             fill
+             objectFit="fill"
+             className=' max-w-none p-4'
             />
           </div>
         ))}

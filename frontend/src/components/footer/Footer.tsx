@@ -6,7 +6,7 @@ export const Footer = () => {
       name: "Alejo Colazurda",
       link: "https://www.linkedin.com/in/alejo-colazurda",
     },
-    { name: "David Yénez", link: "https://www.linkedin.com/in/david--yanez/" },
+    { name: "David Yánez", link: "https://www.linkedin.com/in/david--yanez/" },
     {
       name: "Diego Cabré",
       link: "https://www.linkedin.com/in/diegoantoniocabreperrone/",
