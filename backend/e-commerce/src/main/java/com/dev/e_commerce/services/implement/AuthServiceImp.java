@@ -33,6 +33,7 @@ public class AuthServiceImp implements AuthService {
     this.clientRepository = clientRepository;
   }
 
+
   @Override
   public AuthResponse authentication(AuthRequest authRequest) {
     try {
@@ -44,6 +45,7 @@ public class AuthServiceImp implements AuthService {
     }
     catch (DisabledException e){
       throw new AccountNotVerified("Account not verified, email:" + authRequest.email());
+
     }
   }
 
