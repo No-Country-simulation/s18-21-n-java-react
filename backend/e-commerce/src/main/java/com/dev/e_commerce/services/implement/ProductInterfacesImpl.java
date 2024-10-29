@@ -5,8 +5,10 @@ import com.dev.e_commerce.dtos.request.ProductRequestDto;
 import com.dev.e_commerce.dtos.response.ProductResponseDTO;
 import com.dev.e_commerce.exceptions.ApplicationException;
 import com.dev.e_commerce.mappers.ProductMapper;
+import com.dev.e_commerce.models.Client;
 import com.dev.e_commerce.models.Product;
 import com.dev.e_commerce.repositories.ProductRepository;
+import com.dev.e_commerce.services.interfaces.AuthService;
 import com.dev.e_commerce.services.interfaces.CloudinaryService;
 import com.dev.e_commerce.services.interfaces.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,8 @@ public class ProductInterfacesImpl implements ProductService {
   private ProductMapper productMapper;
   @Autowired
   private CloudinaryService cloudinaryService;
+  @Autowired
+  private AuthServiceImp authService;
 
 
   // LISTADO DE TODOS LOS PRODUCTOS
@@ -42,6 +46,8 @@ public class ProductInterfacesImpl implements ProductService {
   // GUARDAR PRODUCTO
   @Override
   public Product guardarProducto(Product product) {
+    Client authClient = this.authService.getAuthClient();
+    product.setSeller(authClient);
     return this.productRepository.save(product);
   }
 

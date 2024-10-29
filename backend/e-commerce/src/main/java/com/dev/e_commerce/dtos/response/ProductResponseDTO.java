@@ -11,6 +11,6 @@ public record ProductResponseDTO(
         String category,
         Integer stock,
         String shortDescription,
-        Long clientId
+        Long sellerId
 ) {
 }

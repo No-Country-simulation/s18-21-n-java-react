@@ -19,7 +19,6 @@ public record ProductRequestDto(
         String category,
         @NotNull(message = "stock cannot be empty")
         Integer stock,
-        String shortDescription,
-        Long clientId
+        String shortDescription
 ) {
 }
