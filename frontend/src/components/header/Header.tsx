@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { IoCartOutline, IoPerson, IoSearch } from "react-icons/io5";
+import { IoCartOutline, IoSearch } from "react-icons/io5";
+import UserButton from "@/components/header/UserButton";
 
 export const Header = () => {
   return (
@@ -30,9 +31,7 @@ export const Header = () => {
             {/*Link para ir al carrito*/}
             <IoCartOutline />
           </Link>
-          <Link href="/auth/login" className="text-2xl">
-            <IoPerson />
-          </Link>
+          <UserButton/>
         </div>
       </div>
     </header>
