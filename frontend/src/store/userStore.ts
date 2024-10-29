@@ -1,26 +1,27 @@
 import {create} from "zustand";
-
-interface LoggedUser {
+export interface LoggedUser {
   jwtToken: string,
   id: number,
 };
-
 interface UserState {
-  user: LoggedUser | null,
+  user: LoggedUser,
   logUser: (newUser: LoggedUser) => void,
   logoutUser: () => void,
 }
 
-const initialUser = null;
-
 export const useUserStore = create<UserState>((set) => ({
-  user: initialUser,
+  user:
+    localStorage.getItem("user") === "null" ||
+    localStorage.getItem("user") === "undefined"
+      ? { id: -1, jwtToken: "" }
+      : JSON.parse(localStorage.getItem("user") ?? '{ "id": -1, "jwtToken": "" }'),
+
   logUser(newUser: LoggedUser) {
     localStorage.setItem("user", JSON.stringify(newUser));
-    set({user: newUser});
+    set({ user: newUser });
   },
   logoutUser() {
     localStorage.removeItem("user");
-    set({user: null});
-  }
-}))
+    set({ user: { id: -1, jwtToken: "" } });
+  },
+}));

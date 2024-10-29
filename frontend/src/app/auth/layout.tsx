@@ -40,6 +40,7 @@ export default function AuthLayout({
   if (pathname.match("/signup")) action = "signup";
   if (pathname.match("/login")) action = "login";
   if (pathname.match("/verification")) action = "verification";
+  console.log(action);
 
   return (
     <Card className="max-w-sm mx-auto">

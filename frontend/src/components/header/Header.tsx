@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { IoCartOutline, IoPerson, IoSearch } from "react-icons/io5";
+import { IoCartOutline, IoSearch } from "react-icons/io5";
+import UserButton from "@/components/header/UserButton";
 
 export const Header = () => {
   return (
@@ -26,13 +27,11 @@ export const Header = () => {
 
         {/* Iconos de carrito y sesión */}
         <div className="flex items-center space-x-4">
-          <Link href="/CartPage" className="text-2xl">
+          <Link href="/cart" className="text-2xl">
             {/*Link para ir al carrito*/}
             <IoCartOutline />
           </Link>
-          <Link href="/auth/login" className="text-2xl">
-            <IoPerson />
-          </Link>
+          <UserButton />
         </div>
       </div>
     </header>
