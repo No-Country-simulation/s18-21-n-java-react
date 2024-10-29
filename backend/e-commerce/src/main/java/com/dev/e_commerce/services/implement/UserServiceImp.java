@@ -4,10 +4,15 @@ import com.dev.e_commerce.dtos.request.UpdatePasswordDto;
 import com.dev.e_commerce.dtos.request.UserRequestDto;
 import com.dev.e_commerce.dtos.response.UserResponseDto;
 import com.dev.e_commerce.exceptions.ApplicationException;
+import com.dev.e_commerce.mappers.ClientMapper;
+import com.dev.e_commerce.mappers.LocationMapper;
 import com.dev.e_commerce.mappers.UserMapper;
+import com.dev.e_commerce.models.Client;
+import com.dev.e_commerce.models.Location;
 import com.dev.e_commerce.models.Role;
 import com.dev.e_commerce.models.User;
 import com.dev.e_commerce.repositories.UserRepository;
+import com.dev.e_commerce.services.interfaces.ClientService;
 import com.dev.e_commerce.services.interfaces.CloudinaryService;
 import com.dev.e_commerce.services.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,14 +31,20 @@ public class UserServiceImp implements UserService {
   private final PasswordEncoder passwordEncoder;
   private final MailService mailService;
   private final CloudinaryService cloudinaryService;
+  private final ClientService clientService;
+  private final ClientMapper clientMapper;
+  private final LocationMapper locationMapper;
 
   @Autowired
-  public UserServiceImp(UserRepository userRepository, PasswordEncoder passwordEncoder, UserMapper userMapper, MailService mailService, CloudinaryService cloudinaryService) {
+  public UserServiceImp(UserRepository userRepository, PasswordEncoder passwordEncoder, UserMapper userMapper, MailService mailService, CloudinaryService cloudinaryService, ClientService clientService, ClientMapper clientMapper, LocationMapper locationMapper) {
     this.userRepository = userRepository;
     this.passwordEncoder = passwordEncoder;
     this.userMapper = userMapper;
     this.mailService = mailService;
     this.cloudinaryService = cloudinaryService;
+    this.clientService = clientService;
+    this.clientMapper = clientMapper;
+    this.locationMapper = locationMapper;
   }
 
   @Override
@@ -44,7 +55,12 @@ public class UserServiceImp implements UserService {
     user.setRole(Role.CLIENT);
     user.setCreatedAt(LocalDate.now());
     user.setVerificationCode(mailService.generateVerificationCode());
-    userRepository.save(user);
+
+    Client client = this.clientMapper.toEntityFromUser(requestDTO);
+    this.clientMapper.updateFromUser(client, user);
+    Location location = this.locationMapper.toEntityFromUserDto(requestDTO);
+    client.setLocation(location);
+    clientService.save(client);
     mailService.sendEmailToVerification(user.getEmail(), user.getVerificationCode());
     return userMapper.toResponseDto(user);
   }

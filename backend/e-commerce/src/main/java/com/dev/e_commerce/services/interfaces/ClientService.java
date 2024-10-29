@@ -1,5 +1,7 @@
 package com.dev.e_commerce.services.interfaces;
 
 
-public interface ClientService {
+import com.dev.e_commerce.models.Client;
+
+public interface ClientService extends EntityGenericService<Client> {
 }

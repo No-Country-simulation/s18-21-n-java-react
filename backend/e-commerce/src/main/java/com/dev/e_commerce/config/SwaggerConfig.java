@@ -28,6 +28,9 @@ public class SwaggerConfig {
     Server development = new Server()
             .url("http://localhost:8080")
             .description("Development server");
+    Server production = new Server()
+            .url("https://deploy-smart-store.onrender.com")
+            .description("Production server");
 
     Info information = new Info()
             .title("SmartStore")
@@ -49,7 +52,7 @@ public class SwaggerConfig {
 
     return new OpenAPI()
             .info(information)
-            .servers(List.of(development));
+            .servers(List.of(production, development));
   }
 
 }

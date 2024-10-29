@@ -12,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Mapper(componentModel = "spring")
 public abstract class UserMapper {
-
+  @Mapping(target = "id" , source = "id")
   public abstract UserResponseDto toResponseDto(User user);
 
   @Mapping(target = "photoUrl", source = "photo")
