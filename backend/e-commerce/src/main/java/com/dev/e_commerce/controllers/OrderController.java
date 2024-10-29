@@ -7,7 +7,6 @@ import com.dev.e_commerce.mappers.DetailsMapper;
 import com.dev.e_commerce.mappers.OrderMapper;
 import com.dev.e_commerce.models.DetailsOrder;
 import com.dev.e_commerce.models.Order;
-import com.dev.e_commerce.models.Product;
 import com.dev.e_commerce.services.interfaces.OrderService;
 import com.dev.e_commerce.services.interfaces.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -76,12 +75,9 @@ public class OrderController {
             .toList();
 
     order.setDetailsOrders(newDetails);
+      // Bajamos el stock de los productos
+      productService.updateStock(newDetails);
     order = orderService.createOrder(order);
-              // Bajamos el stock de los productos
-    Product product= newDetails.stream().map(detail -> detail.getProduct()).findFirst().get();
-    int x = newDetails.stream().map(detail -> detail.getQuantity()).reduce(0, Integer::sum);
-      product.setStock(product.getStock() - x);
-      productService.guardarProducto(product);
 
 
     OrderResponseDto responseOrderDto = orderMapper.toOrderResponseDto(order);
@@ -153,5 +149,6 @@ public class OrderController {
 
     return ResponseEntity.ok(response);
   }
+
 
 }
