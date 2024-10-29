@@ -1,5 +1,6 @@
 'use client'
 import { CardPanelProducts } from "@/components/panelPage/CardPanelProducts";
+import { InfoUser } from "@/components/panelPage/InfoUser";
 import { ProductForm } from "@/components/panelPage/NewProductForm";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -33,9 +34,11 @@ export default function ControlPanel() {
           <h2 className="text-5xl text-center my-6 font-bold">Panel de Control </h2>
          <div className="flex">
 
-                <div className="w-2/5 bg-slate-400 flex items-center justify-center">
-                  <p > datos del usuario </p>
+                <div className="w-2/5  flex justify-center">
+                   <InfoUser/>
+               
                 </div >
+
                 <div className="w-3/5  flex flex-col items-center">
                     <p className="text-2xl my-4 ">Mis productos registrados</p>
 

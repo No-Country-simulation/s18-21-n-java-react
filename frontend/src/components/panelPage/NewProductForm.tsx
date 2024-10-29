@@ -14,7 +14,8 @@ import { useForm } from "react-hook-form"
 import { creatProduct } from "@/services/product.service"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { TypeZodProduct, productSchema } from "@/lib/formValidations/productValidation"
-import { useEffect, useState } from "react"
+
+import { useToast } from "@/hooks/use-toast"
 
 
 
@@ -23,23 +24,11 @@ import { useEffect, useState } from "react"
 export const ProductForm = () => {
 
   const {register, handleSubmit, formState: {errors}} =useForm<TypeZodProduct>({resolver: zodResolver(productSchema)})
- const [message, setMessage] = useState('')
- const [show, setShow] = useState(false)
+ const { toast } = useToast()
  const dataUser = localStorage.getItem('user')
   const jsnUser = JSON.parse(dataUser || '')
 
  
-
-
- useEffect(() => {
-  const timeId = setTimeout(() => {
-    
-    setShow(false)
-  }, 3000)
-  return () => clearTimeout(timeId)
-}, [message]);
-
-
 
 const onSubmit = handleSubmit(async(data) =>{
 
@@ -62,13 +51,20 @@ const onSubmit = handleSubmit(async(data) =>{
    
        const res = await creatProduct(formData)
        if(!res.status){
-        setMessage("hubo un error en la creacion")
-        setShow(true)
+        toast({
+          title: "Fallo el registro ",
+          description: "El producto no se puedo registrar",
+          variant: 'destructive'
+        })
+      
        } else {
-        setMessage("Producto registrado exitosamente" )
-        setShow(true)
+        toast({
+          title: "Registro exitoso ",
+          description: "El producto se pudo registrar exitosamente",
+          className: "bg-green-300"
+        })
        }
-   console.log(res)
+ 
   }  catch (error) {
     console.log(error)
   }
@@ -115,7 +111,7 @@ const onSubmit = handleSubmit(async(data) =>{
         Imagen
         </Label>
         <Input className="block" type="file" {...register("photo")} />
-        {errors.price?.message && <p className="text-xs text-red-700">{errors.price.message}</p>}
+        {typeof errors.photo?.message === "string" && <p className="text-xs text-red-700">{errors.photo.message}</p>}
     </FormItem>
     <FormItem>
         <Label className="block pt-4 pb-1">
@@ -146,12 +142,7 @@ const onSubmit = handleSubmit(async(data) =>{
 
         <Button className="w-full my-8" type="submit">Crear producto</Button>
 
-        {
-          message && show && 
-          <p className="border p-1">{message}</p>
-        
-        }
-
+       
     </form>
   )
 }
