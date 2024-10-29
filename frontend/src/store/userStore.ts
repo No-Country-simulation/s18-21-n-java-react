@@ -1,10 +1,10 @@
 import {create} from "zustand";
-interface LoggedUser {
+export interface LoggedUser {
   jwtToken: string,
   id: number,
 };
 interface UserState {
-  user: LoggedUser | null,
+  user: LoggedUser,
   logUser: (newUser: LoggedUser) => void,
   logoutUser: () => void,
 }

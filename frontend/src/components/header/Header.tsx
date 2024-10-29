@@ -27,11 +27,11 @@ export const Header = () => {
 
         {/* Iconos de carrito y sesión */}
         <div className="flex items-center space-x-4">
-          <Link href="/CartPage" className="text-2xl">
+          <Link href="/cart" className="text-2xl">
             {/*Link para ir al carrito*/}
             <IoCartOutline />
           </Link>
-          <UserButton/>
+          <UserButton />
         </div>
       </div>
     </header>
