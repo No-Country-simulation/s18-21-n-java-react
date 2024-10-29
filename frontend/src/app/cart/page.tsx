@@ -14,7 +14,7 @@ export default function CartPage() {
       <ShoppingCartBreadcrumb />
       <div className="space-y-4">
         {items.map((item) => (
-          <CartItem key={item.idProducto} item={item} />
+          <CartItem key={item.id} item={item} />
         ))}
       </div>
       <CartSummary

@@ -2,19 +2,20 @@ import {Product} from "@/lib/types/productInterface"
 
 export const productList: Product[] = [
   {
-    idProducto: 1,
+    id: 1,
     photoUrl: "/images/alienware.jpg",
     name: "Auriculares Bluetooth",
     brand: "Alienware",
     description:
-      "Auriculares inalámbricos con excelente calidProductoad de sonidProductoo.",
+      "Auriculares inalámbricos con excelente calidProductoad de sonido.",
     price: 50,
     category: "Auriculares",
     stock: 20,
     shortDescription: "",
+    sellerId: 0,
   },
   {
-    idProducto: 2,
+    id: 2,
     photoUrl: "/images/xiaomi.jpg",
     name: "Smartphone",
     brand: "Xiaomi",
@@ -23,9 +24,10 @@ export const productList: Product[] = [
     category: "Smartphones",
     stock: 20,
     shortDescription: "",
+    sellerId: 1,
   },
   {
-    idProducto: 3,
+    id: 3,
     photoUrl: "/images/alienware.jpg",
     name: "Laptop Gamer",
     brand: "Dell",
@@ -35,9 +37,10 @@ export const productList: Product[] = [
     category: "Laptops",
     stock: 20,
     shortDescription: "",
+    sellerId: 1,
   },
   {
-    idProducto: 4,
+    id: 4,
     photoUrl: "/images/xiaomi.jpg",
     name: "Mouse Inalámbrico",
     brand: "Logitech",
@@ -46,9 +49,10 @@ export const productList: Product[] = [
     category: "Mouse",
     stock: 20,
     shortDescription: "",
+    sellerId: 1,
   },
   {
-    idProducto: 5,
+    id: 5,
     photoUrl: "/images/alienware.jpg",
     name: "Smartwatch",
     brand: "Samsung",
@@ -57,9 +61,10 @@ export const productList: Product[] = [
     category: "SmartWatch",
     stock: 20,
     shortDescription: "",
+    sellerId: 1,
   },
   {
-    idProducto: 6,
+    id: 6,
     photoUrl: "/images/xiaomi.jpg",
     name: "Teclado Mecánico",
     brand: "MSI",
@@ -68,5 +73,6 @@ export const productList: Product[] = [
     category: "Teclados",
     stock: 20,
     shortDescription: "",
+    sellerId: 1,
   },
 ];
