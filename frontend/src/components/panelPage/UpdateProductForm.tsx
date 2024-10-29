@@ -4,6 +4,7 @@ import { Label } from '../ui/label'
 import { Input } from '../ui/input'
 import { Textarea } from '../ui/textarea'
 import { useForm } from 'react-hook-form'
+import { useToast } from "@/hooks/use-toast"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { TypeZodProduct, productSchema } from '@/lib/formValidations/productValidation'
 import { Button } from '../ui/button'
@@ -26,8 +27,9 @@ import { getProductById, updateProduct } from '@/services/product.service'
 
 
 export const UpdateProdcutForm = ({id}:{id: number}) => {
-    const {register, handleSubmit, watch, reset} =useForm({resolver: zodResolver(productSchema)})
+    const {register, handleSubmit, reset} =useForm({resolver: zodResolver(productSchema)})
     const [dataForm, setDataForm] = useState( productDefault )
+    const { toast } = useToast()
 
     useEffect(()=>{
         const getFetch = async() =>{
@@ -79,15 +81,24 @@ export const UpdateProdcutForm = ({id}:{id: number}) => {
             formData.append("stock", data.stock);
             formData.append("shortDescription", data.shortDescription);
             
-            console.log(Array.from(formData.entries()));
-            //console.log(errors)
+        //    console.log(Array.from(formData.entries()));
+        
            
               const res = await updateProduct(formData, id?.toString())
                if(!res?.ok){
-                console.log("no se puedo actualizar")
+         
+                toast({
+                    title: "Fallo la actialización ",
+                    description: "El producto no se puedo actualizar",
+                    variant: 'destructive'
+                  })
       
                } else {
-                console.log("Actualizado exitosamente")
+                toast({
+                    title: "Actualizacion exitosa ",
+                    description: "El producto se pudo actualizar exitosamente",
+                    className: "bg-green-300"
+                  })
           
                }
            console.log(res)
@@ -96,7 +107,7 @@ export const UpdateProdcutForm = ({id}:{id: number}) => {
           }
         
         
-        console.log(data)
+       // console.log(data)
     })
 
   return (
@@ -160,10 +171,6 @@ export const UpdateProdcutForm = ({id}:{id: number}) => {
   </div>
 
       <Button className="w-full my-8" type="submit">Actualizar producto</Button>
-
-      <div>
-        {JSON.stringify(watch(), null, 2)}
-      </div>
   </form>
   )
 }

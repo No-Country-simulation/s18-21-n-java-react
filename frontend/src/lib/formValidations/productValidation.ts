@@ -18,8 +18,8 @@ export const productSchema = z.object({
         message: 'La marca debe tener almenos 2 caracteres' 
     }),
     photoUrl: z.string().optional(),
-    photo: z.any().refine((file) => !(file?.size <= MAX_PHOTO), `Max image size is 5MB.`)
-    .refine((file) => !(IMAGE_TYPES.includes(file?.type)),"Only .jpg, .jpeg, .png and .webp formats are supported." ),
+    photo: z.any().refine((file) => !(file?.size <= MAX_PHOTO), { message: `Max image size is 5MB.`})
+    .refine((file) => !(IMAGE_TYPES.includes(file?.type)), { message: "Only .jpg, .jpeg, .png and .webp formats are supported." } ),
     category: z.string().min(4,{
         message: 'La categoria debe tener almenos 4 caracteres'
     }),
