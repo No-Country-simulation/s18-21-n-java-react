@@ -1,10 +1,12 @@
 package com.dev.e_commerce.services.implement;
 
 
+import com.dev.e_commerce.dtos.request.CategoryRequestDto;
 import com.dev.e_commerce.dtos.request.ProductRequestDto;
 import com.dev.e_commerce.dtos.response.ProductResponseDTO;
 import com.dev.e_commerce.exceptions.ApplicationException;
 import com.dev.e_commerce.mappers.ProductMapper;
+import com.dev.e_commerce.models.Category;
 import com.dev.e_commerce.models.Product;
 import com.dev.e_commerce.repositories.ProductRepository;
 import com.dev.e_commerce.services.interfaces.ProductService;
@@ -14,7 +16,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductInterfacesImpl implements ProductService {
@@ -84,6 +90,20 @@ if(product.isEmpty()){
         // Este método cuenta el número total de productos en la base de datos
         return productRepository.count();
     }
+
+    @Override
+    public List<ProductResponseDTO> filtrarCategoria(CategoryRequestDto categoryRequestDto) {
+        Category category;
+
+        category = Category.valueOf(categoryRequestDto.category().toUpperCase());
+
+
+        List<Product> productos = productRepository.findByCategory(category);
+        return productos.stream()
+                .map(product -> productMapper.toProductResponseDto(product))
+                .collect(Collectors.toList());
+    }
+
 
 }
 
