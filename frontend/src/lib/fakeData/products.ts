@@ -7,7 +7,7 @@ export const productList: Product[] = [
     name: "Auriculares Bluetooth",
     brand: "Alienware",
     description:
-      "Auriculares inalámbricos con excelente calidProductoad de sonidProductoo.",
+      "Auriculares inalámbricos con excelente calidProductoad de sonido.",
     price: 50,
     category: "Auriculares",
     stock: 20,

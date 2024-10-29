@@ -6,7 +6,7 @@ interface CartItem extends Product {
 
 export function cartMapper(items: CartItem[]) {
   const detailsOrders = items.map((item) => ({
-    idProducto: item.idProducto,
+    productId: item.id,
     quantity: item.quantity,
   }));
   return { detailsOrders };

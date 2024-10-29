@@ -18,7 +18,7 @@ export const useCartStore = create<CartStore>((set, get) => ({
   
   increaseQty(product) {
     set((state: CartStore) => {
-      const index = state.items.findIndex(item => item.idProducto === product.idProducto);
+      const index = state.items.findIndex(item => item.id === product.id);
       if (index > -1) return {items: state.items.map((item, i) => i === index ? {...item, quantity: item.quantity + 1} : item)};
       else return {items: [...state.items, {...product, quantity: 1}]};
     })
@@ -27,7 +27,7 @@ export const useCartStore = create<CartStore>((set, get) => ({
   
   decreaseQty(product) {
     set((state: CartStore) => {
-      const index = state.items.findIndex(item => item.idProducto === product.idProducto);
+      const index = state.items.findIndex(item => item.id === product.id);
       if (state.items[index].quantity > 1) return {
         items: state.items.map((item, i) =>
           i === index ? { ...item, quantity: item.quantity - 1 } : item

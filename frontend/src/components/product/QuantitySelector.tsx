@@ -12,7 +12,7 @@ function QuantitySelector({ product }: QuantitySelectorProps) {
   const items = useCartStore((state) => state.items);
   const increaseQty = useCartStore((state) => state.increaseQty);
   const decreaseQty = useCartStore((state) => state.decreaseQty);
-  const item = items.find(item => item.idProducto === product.idProducto);
+  const item = items.find(item => item.id === product.id);
 
   if (item) return (
     <div className="flex items-center mt-4">
