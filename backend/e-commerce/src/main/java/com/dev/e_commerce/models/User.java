@@ -15,7 +15,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "user")
-@Getter @Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @DiscriminatorColumn(name = "user_type")

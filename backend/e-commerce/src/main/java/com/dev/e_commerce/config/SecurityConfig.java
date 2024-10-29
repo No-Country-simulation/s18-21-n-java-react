@@ -44,9 +44,11 @@ public class SecurityConfig {
                                     "/v3/api-docs/**",
                                     "/api/v1/auth/**",
                                     "/api/v1/user/register",
-                                    "/api/v1/user/verifyCode/**"
+                                    "/api/v1/user/verifyCode/**",
+                                    "api/v1/**"
                             ).permitAll()
-                            .requestMatchers(HttpMethod.POST, "/api/v1/order/**").authenticated()
+                            .requestMatchers(HttpMethod.POST, "/api/v1/**order/**").authenticated()
+                            .requestMatchers(HttpMethod.POST, "api/v1/**").permitAll()
                             .requestMatchers(HttpMethod.GET, "/**").permitAll()
                             .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                             .requestMatchers(HttpMethod.PATCH, "/**").permitAll()
