@@ -9,6 +9,10 @@ public record ClientResDto(
         Date birthdate,
         String country,
         String city,
-        String address
+        String address,
+        String name,
+        String lastname,
+        String email,
+        String photoUrl
 ) {
 }

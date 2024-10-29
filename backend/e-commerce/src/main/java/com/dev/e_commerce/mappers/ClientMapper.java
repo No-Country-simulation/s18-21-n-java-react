@@ -12,6 +12,12 @@ public interface ClientMapper {
   @Mapping(target = "documentIdentification", source = "identification")
   @Mapping(target = "birthDate", source = "birthdate")
   Client toEntity(ClientReqDto request);
+
+  @Mapping(target = "birthdate", source = "birthDate")
+  @Mapping(target = "identification", source = "documentIdentification")
+  @Mapping(target = "address", source = "location.address")
+  @Mapping(target = "city", source = "location.city")
+  @Mapping(target = "country", source = "location.country")
   ClientResDto toResponse(Client client);
 
   @Mapping(target = "documentIdentification", source = "identification")
