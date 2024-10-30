@@ -1,13 +1,11 @@
 const URL = "https://deploy-smart-store.onrender.com/api/v1/products";
-const storToken = localStorage?.getItem("user");
-const TOKEN = JSON.parse(storToken || "{}");
 
-export const creatProduct = async (data: FormData) => {
+export const creatProduct = async (data: FormData, token: string) => {
   try {
     const res = await fetch(URL, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${TOKEN.jwtToken}`,
+        Authorization: `Bearer ${token}`,
       },
       body: data,
     });
@@ -33,13 +31,13 @@ export const getAllProducts = async () => {
   }
 };
 
-export const updateProduct = async (data: FormData, id: string) => {
+export const updateProduct = async (data: FormData, id: string, token: string) => {
   try {
     const res = await fetch(URL + `/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
-        Authorization: `Bearer ${TOKEN.jwtToken}`,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(data),
     });

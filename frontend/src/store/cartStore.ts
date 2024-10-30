@@ -1,6 +1,6 @@
-import { create } from "zustand";
+import { create, type StateCreator } from "zustand";
 import { Product } from "@/lib/types/productInterface";
-
+import {persist} from "zustand/middleware";
 export interface CartItemInterface extends Product {
   quantity: number;
 }
@@ -12,8 +12,8 @@ interface CartStore {
   decreaseQty: (product: Product) => void;
 }
 
-export const useCartStore = create<CartStore>((set, get) => ({
-  items: JSON.parse(localStorage?.getItem("cart") ?? "[]"),
+const cartApi: StateCreator<CartStore> = (set, get) => ({
+  items: [],
   get subtotal() {
     return get().items.reduce(
       (subtotal, item) => subtotal + item.price * item.quantity,
@@ -32,7 +32,6 @@ export const useCartStore = create<CartStore>((set, get) => ({
         };
       else return { items: [...state.items, { ...product, quantity: 1 }] };
     });
-    localStorage?.setItem("cart", JSON.stringify(get().items));
   },
 
   decreaseQty(product) {
@@ -46,6 +45,11 @@ export const useCartStore = create<CartStore>((set, get) => ({
         };
       else return { items: state.items.filter((_item, i) => i !== index) };
     });
-    localStorage?.setItem("cart", JSON.stringify(get().items));
   },
-}));
+});
+
+export const useCartStore = create<CartStore>()(
+  persist(cartApi, {
+    name: "cartStorage"
+  })
+);

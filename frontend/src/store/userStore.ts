@@ -1,7 +1,8 @@
-import {create} from "zustand";
+import {create, StateCreator} from "zustand";
+import { persist } from "zustand/middleware";
 export interface LoggedUser {
-  jwtToken: string,
   id: number,
+  jwtToken: string,
 };
 interface UserState {
   user: LoggedUser,
@@ -9,19 +10,17 @@ interface UserState {
   logoutUser: () => void,
 }
 
-export const useUserStore = create<UserState>((set) => ({
-  user:
-    localStorage?.getItem("user") === "null" ||
-    localStorage?.getItem("user") === "undefined"
-      ? { id: -1, jwtToken: "" }
-      : JSON.parse(localStorage?.getItem("user") ?? '{ "id": -1, "jwtToken": "" }'),
+const userApi: StateCreator<UserState> = (set) => ({
+  user: { id: -1, jwtToken: "" },
 
   logUser(newUser: LoggedUser) {
-    localStorage?.setItem("user", JSON.stringify(newUser));
     set({ user: newUser });
   },
   logoutUser() {
-    localStorage?.removeItem("user");
     set({ user: { id: -1, jwtToken: "" } });
   },
+});
+
+export const useUserStore = create<UserState>()(persist(userApi, {
+  name: "userStorage"
 }));

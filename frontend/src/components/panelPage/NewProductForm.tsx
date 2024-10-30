@@ -15,6 +15,7 @@ import {
 } from "@/lib/formValidations/productValidation";
 
 import { useToast } from "@/hooks/use-toast";
+import { useUserStore } from "@/store/userStore";
 
 export const ProductForm = () => {
   const {
@@ -23,12 +24,11 @@ export const ProductForm = () => {
     formState: { errors },
   } = useForm<TypeZodProduct>({ resolver: zodResolver(productSchema) });
   const { toast } = useToast();
-  const dataUser = localStorage?.getItem("user");
-  const jsnUser = JSON.parse(dataUser || "{}");
+  const user = useUserStore(state => state.user);
 
   const onSubmit = handleSubmit(async (data) => {
     try {
-      data.clientId = jsnUser.id.toString();
+      data.clientId = user.id.toString();
       const formData = new FormData();
 
       formData.append("name", data.name);
@@ -43,7 +43,7 @@ export const ProductForm = () => {
         formData.append("clientId", data.clientId);
       }
 
-      const res = await creatProduct(formData);
+      const res = await creatProduct(formData, user.jwtToken);
       if (!res.status) {
         toast({
           title: "Fallo el registro ",
