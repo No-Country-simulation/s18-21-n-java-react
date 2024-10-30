@@ -3,9 +3,11 @@ package com.dev.e_commerce.services.interfaces;
 
 import com.dev.e_commerce.dtos.request.ProductRequestDto;
 import com.dev.e_commerce.dtos.response.ProductResponseDTO;
+import com.dev.e_commerce.models.DetailsOrder;
 import com.dev.e_commerce.models.Product;
 import org.springframework.data.domain.Page;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface ProductService {
@@ -24,4 +26,6 @@ public interface ProductService {
   long countTotalProducts();
 
   Product getById(Long id);
+
+  void updateStock(List<DetailsOrder> detailsOrders);
 }

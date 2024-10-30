@@ -75,7 +75,11 @@ public class OrderController {
             .toList();
 
     order.setDetailsOrders(newDetails);
+    // Bajamos el stock de los productos
+    productService.updateStock(newDetails);
     order = orderService.createOrder(order);
+
+
     OrderResponseDto responseOrderDto = orderMapper.toOrderResponseDto(order);
     ApiResponseDto<OrderResponseDto> response = new ApiResponseDto<>(
             true,
@@ -145,5 +149,6 @@ public class OrderController {
 
     return ResponseEntity.ok(response);
   }
+
 
 }
