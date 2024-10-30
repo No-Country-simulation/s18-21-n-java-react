@@ -16,26 +16,26 @@ export default function ShoppingCartBreadcrumb() {
       <BreadcrumbList className="flex flex-wrap items-center space-x-2 text-sm sm:text-base">
         <BreadcrumbItem>
           <BreadcrumbLink
-            href="/CartPage"
+            href="/cart"
             className={`${
               currentPath === "/CartPage" ? "font-bold text-indigo-600" : ""
             } hover:text-indigo-500 transition-colors`}
           >
-            carrito
+            Carrito
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>/</BreadcrumbSeparator>
 
         <BreadcrumbItem>
           <BreadcrumbLink
-            href="/products"
+            href="/checkout-address"
             className={`${
               currentPath === "/checkout-address"
                 ? "font-bold text-indigo-600"
                 : ""
             } hover:text-indigo-500 transition-colors`}
           >
-            tus datos
+            Tus datos
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>/</BreadcrumbSeparator>
@@ -49,7 +49,7 @@ export default function ShoppingCartBreadcrumb() {
                 : ""
             } hover:text-indigo-500 transition-colors`}
           >
-            pago
+            Medios de pago
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>/</BreadcrumbSeparator>
@@ -63,7 +63,7 @@ export default function ShoppingCartBreadcrumb() {
                 : ""
             } hover:text-indigo-500 transition-colors`}
           >
-            Confirmar
+            Confirmar pedido
           </BreadcrumbLink>
         </BreadcrumbItem>
       </BreadcrumbList>

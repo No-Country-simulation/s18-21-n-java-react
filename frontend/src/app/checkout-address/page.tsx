@@ -1,8 +1,9 @@
+"use client"
+
 import {addresses} from "@/lib/fakeData/addresses";
 import ShoppingCartBreadcrumb from "@/components/Breadcrumb/Breadcrumb";
 import CheckoutAddressCard from "@/components/checkout-address/CheckoutAdress"
 import ContinueButton from "@/components/ContinueButton/ContinueButton";
-
 
 export default function CheckoutAddress() {
   return (
@@ -21,7 +22,7 @@ export default function CheckoutAddress() {
           ))}
       </div>
       <div className="flex justify-center sm:justify-end">
-        <ContinueButton>Continuar con el medio de pago</ContinueButton>
+        <ContinueButton step="address">Continuar con el medio de pago</ContinueButton>
       </div>
           </form>
     </div>

@@ -22,7 +22,7 @@ export default function CartPage() {
         subtotal={items.reduce((subtotal, item) => subtotal + item.price*item.quantity, 0)}
       />
       <div className="flex justify-center sm:justify-end">
-        <ContinueButton>Continuar con mis datos</ContinueButton>
+        <ContinueButton step="cart">Continuar con mis datos</ContinueButton>
       </div>
     </div>
   );
