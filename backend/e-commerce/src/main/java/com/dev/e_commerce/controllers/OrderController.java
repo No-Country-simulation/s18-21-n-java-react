@@ -75,8 +75,8 @@ public class OrderController {
             .toList();
 
     order.setDetailsOrders(newDetails);
-      // Bajamos el stock de los productos
-      productService.updateStock(newDetails);
+    // Bajamos el stock de los productos
+    productService.updateStock(newDetails);
     order = orderService.createOrder(order);
 
 

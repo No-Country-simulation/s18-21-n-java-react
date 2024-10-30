@@ -13,6 +13,7 @@ import com.dev.e_commerce.services.interfaces.ClientService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -23,17 +24,12 @@ import java.util.stream.StreamSupport;
 
 @RestController
 @RequestMapping("${api.base}/client")
-@Tag(name = "Client Managment", description = "Client API")
+@RequiredArgsConstructor
+@Tag(name = "Client Management", description = "Client controller")
 public class ClientController {
     private final ClientService clientService;
     private final ClientMapper clientMapper;
     private final LocationMapper locationMapper;
-
-    public ClientController(ClientService clientService, ClientMapper clientMapper, LocationMapper locationMapper) {
-        this.clientService = clientService;
-        this.clientMapper = clientMapper;
-        this.locationMapper = locationMapper;
-    }
 
     @Operation(summary = "Create a new client")
     @PostMapping

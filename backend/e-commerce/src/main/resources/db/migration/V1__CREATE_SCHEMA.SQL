@@ -1,3 +1,4 @@
+USE ${db_name};
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (

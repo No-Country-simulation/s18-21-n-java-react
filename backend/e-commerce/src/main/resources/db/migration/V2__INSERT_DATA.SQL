@@ -1,4 +1,4 @@
-INSERT INTO ${DB_NAME}.`user`
+INSERT INTO ${db_name}.`user`
 (`user_type`, `id`, `created_at`, `email`, `is_enabled`, `lastname`, `name`, `password`, `photo_url`, `role`, `verification_code`)
 VALUES
 ('User', 1, '2024-10-01', 'prueba01@gmail.com', true, 'Garcia', 'Carlos', '$2a$10$i0vxx9r/4pVJclqjeQa1Fux00sVWs1wiNNHYdbizTv9zKCoYPdS3.', 'https://example.com/photo1.jpg', 'CLIENT', 'ver_code_1'),

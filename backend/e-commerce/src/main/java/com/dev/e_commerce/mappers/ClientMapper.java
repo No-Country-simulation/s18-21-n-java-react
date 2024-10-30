@@ -3,16 +3,12 @@ package com.dev.e_commerce.mappers;
 import com.dev.e_commerce.dtos.request.ClientReqDto;
 import com.dev.e_commerce.dtos.request.UserRequestDto;
 import com.dev.e_commerce.dtos.response.ClientResDto;
-import com.dev.e_commerce.dtos.response.ClientResponseDto;
 import com.dev.e_commerce.models.Client;
-import com.dev.e_commerce.models.Location;
 import com.dev.e_commerce.models.User;
-import com.dev.e_commerce.services.interfaces.LocationService;
 import org.mapstruct.*;
 
-@Mapper(componentModel = MappingConstants.ComponentModel.SPRING,uses={})
+@Mapper(componentModel = "spring",uses={})
 public interface ClientMapper {
-
     @Mapping(target = "documentIdentification", source = "identification")
     @Mapping(target = "birthDate", source = "birthdate")
     Client toEntity(ClientReqDto request);
