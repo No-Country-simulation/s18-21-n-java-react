@@ -1,3 +1,5 @@
+"use client"
+
 import ShoppingCartBreadcrumb from "@/components/Breadcrumb/Breadcrumb";
 import ContinueButton from "@/components/ContinueButton/ContinueButton";
 
@@ -101,9 +103,8 @@ export default function CheckoutConfirmPage() {
         </Card>
       </div>
 
-      {/* Botón Continuar */}
       <div className="flex justify-center mt-6 sm:justify-end">
-        <ContinueButton >Continuar</ContinueButton>
+        <ContinueButton step="confirm">Confirmar compra</ContinueButton>
       </div>
     </div>
   );

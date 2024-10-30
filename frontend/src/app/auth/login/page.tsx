@@ -8,6 +8,7 @@ import { loginSchema } from "@/lib/formValidations/authValidation";
 import { login } from "@/services/authService";
 import { useUserStore } from "@/store/userStore";
 import { useToast } from "@/hooks/use-toast";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
   const { register, handleSubmit } = useForm({
@@ -15,11 +16,14 @@ export default function LoginPage() {
   });
   const logUser = useUserStore((state) => state.logUser);
   const { toast } = useToast();
+  const router = useRouter();
 
   function onLogin(data: object) {
     login(data).then((user) => {
       logUser(user);
-    toast({title: "¡Sesión iniciada!"})});
+      toast({ title: "¡Sesión iniciada!" });
+      router.push("/");
+    });
   }
 
   return (

@@ -44,7 +44,3 @@ export async function login(loginFields: object) {
       else console.log(err);
     }
 }
-
-export async function logout() {
-  console.log("logout");
-}
