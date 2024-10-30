@@ -40,7 +40,7 @@ export default function ContinueButton({
           router.push("/checkout-confirm");
           break;
         case "confirm":
-          await postOrder(items);
+          await postOrder(items, user.jwtToken);
           toast({
             title: "¡Pedido realizado con éxito!",
             description:

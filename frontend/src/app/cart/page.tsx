@@ -19,7 +19,10 @@ export default function CartPage() {
       </div>
       <CartSummary
         totalItems={items.length}
-        subtotal={items.reduce((subtotal, item) => subtotal + item.price*item.quantity, 0)}
+        subtotal={items.reduce(
+          (subtotal, item) => subtotal + item.price * item.quantity,
+          0
+        )}
       />
       <div className="flex justify-center sm:justify-end">
         <ContinueButton step="cart">Continuar con mis datos</ContinueButton>
