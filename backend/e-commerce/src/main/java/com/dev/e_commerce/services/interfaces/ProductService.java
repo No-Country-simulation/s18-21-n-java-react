@@ -1,6 +1,7 @@
 package com.dev.e_commerce.services.interfaces;
 
 
+import com.dev.e_commerce.dtos.request.CategoryRequestDto;
 import com.dev.e_commerce.dtos.request.ProductRequestDto;
 import com.dev.e_commerce.dtos.response.ProductResponseDTO;
 import com.dev.e_commerce.models.DetailsOrder;
@@ -28,4 +29,6 @@ public interface ProductService {
   Product getById(Long id);
 
   void updateStock(List<DetailsOrder> detailsOrders);
+
+  List<ProductResponseDTO> filtrarCategoria(CategoryRequestDto categoryRequestDto);
 }

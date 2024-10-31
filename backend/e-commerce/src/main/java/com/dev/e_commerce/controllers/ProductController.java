@@ -2,6 +2,7 @@ package com.dev.e_commerce.controllers;
 
 
 import com.dev.e_commerce.dtos.ApiResponseDto;
+import com.dev.e_commerce.dtos.request.CategoryRequestDto;
 import com.dev.e_commerce.dtos.request.ProductRequestDto;
 import com.dev.e_commerce.dtos.response.ProductResponseDTO;
 import com.dev.e_commerce.mappers.ProductMapper;
@@ -15,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -58,7 +60,7 @@ public class ProductController {
   public ResponseEntity<ApiResponseDto<ProductResponseDTO>> saveProduct(
           @Validated @ModelAttribute ProductRequestDto productRequestDto) {
     Product product = productMapper.toEntity(productRequestDto, cloudinaryService);
-    System.out.println("creo el producot*************************************************");
+    System.out.println("creo el producto*************************************************");
     product = productService.guardarProducto(product);
     System.out.println("guardo el producto**************************************");
     ProductResponseDTO productResponseDTO = productMapper.toProductResponseDto(product);
@@ -129,5 +131,23 @@ public class ProductController {
     );
 
     return ResponseEntity.ok(response);
+  }
+
+  //  FILTRAR POR CATEGORIA
+  @PostMapping("/{category}")
+  public ResponseEntity<ApiResponseDto<List<ProductResponseDTO>>> filterCategory(@Validated @RequestBody CategoryRequestDto categoryRequestDto){
+
+
+    List<ProductResponseDTO> productosFiltrados = productService.filtrarCategoria(categoryRequestDto);
+
+    String mensaje = productosFiltrados.isEmpty() ? "No se encontraron productos." : "Productos encontrados exitosamente.";
+
+    ApiResponseDto<List<ProductResponseDTO>> response = new ApiResponseDto<>(
+            true,
+            "Producto encontrado exitosamente.",
+            productosFiltrados
+    );
+    return ResponseEntity.ok(response);
+
   }
 }
