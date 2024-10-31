@@ -1,8 +1,8 @@
-const baseUrl = "https://deploy-smart-store.onrender.com/api/v1/products";
+const URL = "https://deploy-smart-store.onrender.com/api/v1/products";
 
 export const creatProduct = async (data: FormData, token: string) => {
   try {
-    const res = await fetch(baseUrl, {
+    const res = await fetch(URL, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -19,21 +19,21 @@ export const creatProduct = async (data: FormData, token: string) => {
 };
 
 export const getAllProducts = async () => {
-  const res = await fetch(baseUrl);
-  if (!res.ok) {
-    throw new Error(`Error ${res.status}: ${res.statusText}`);
+  try {
+    const res = await fetch(URL + "?page=2");
+    if (!res.status) {
+      throw new Error("Error en la petición: " + res.status);
+    }
+    const data = await res.json();
+    return data.dataList;
+  } catch (error) {
+    console.log(error);
   }
-  const data = await res.json();
-  return data.dataList;
 };
 
-export const updateProduct = async (
-  data: FormData,
-  id: string,
-  token: string
-) => {
+export const updateProduct = async (data: FormData, id: string, token: string) => {
   try {
-    const res = await fetch(baseUrl + `/${id}`, {
+    const res = await fetch(URL + `/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -53,7 +53,7 @@ export const updateProduct = async (
 
 export const getProductById = async (id: string) => {
   try {
-    const res = await fetch(baseUrl + `/${id}`);
+    const res = await fetch(URL + `/${id}`);
     if (!res.status) {
       throw new Error("Error en la petición: " + res.status);
     }
@@ -66,7 +66,7 @@ export const getProductById = async (id: string) => {
 
 export const deleteProductById = async (id: string) => {
   try {
-    const res = await fetch(baseUrl + `/${id}`, {
+    const res = await fetch(URL + `/${id}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
