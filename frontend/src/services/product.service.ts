@@ -1,3 +1,5 @@
+import { GetAllProducts } from "@/lib/types/getAllProductsInterface";
+
 const baseUrl = "https://deploy-smart-store.onrender.com/api/v1/products";
 
 export const creatProduct = async (data: FormData, token: string) => {
@@ -18,13 +20,15 @@ export const creatProduct = async (data: FormData, token: string) => {
   }
 };
 
-export const getAllProducts = async () => {
-  const res = await fetch(baseUrl);
+export async function getAllProducts(page: string = "0"): Promise<GetAllProducts> {
+  const query = new URL(baseUrl);
+  query.searchParams.append("page", page);
+  const res = await fetch(query);
   if (!res.ok) {
     throw new Error(`Error ${res.status}: ${res.statusText}`);
   }
   const data = await res.json();
-  return data.dataList;
+  return data;
 };
 
 export const updateProduct = async (
