@@ -11,8 +11,8 @@ export const addresses: Address[] = [
     postCode: 30840,
   },
   {
-    firstName: "John",
-    lastName: "Doe",
+    firstName: "María",
+    lastName: "Renard",
     street: "Arce",
     num: 996,
     province: "Tucumán",
@@ -20,8 +20,8 @@ export const addresses: Address[] = [
     postCode: 7918,
   },
   {
-    firstName: "John",
-    lastName: "Doe",
+    firstName: "Sarah",
+    lastName: "Kerrigan",
     street: "Emilia",
     num: 35,
     province: "Santa Cruz",
@@ -29,8 +29,8 @@ export const addresses: Address[] = [
     postCode: 66570,
   },
   {
-    firstName: "John",
-    lastName: "Doe",
+    firstName: "Juan",
+    lastName: "Pérez",
     street: "Aragón",
     num: 341,
     province: "Mendoza",
