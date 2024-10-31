@@ -3,11 +3,11 @@ import {Product} from "@/lib/types/productInterface"
 export const productList: Product[] = [
   {
     id: 1,
-    photoUrl: "/images/alienware.jpg",
+    photoUrl: "/images/auriculares.jpg",
     name: "Auriculares Bluetooth",
     brand: "Alienware",
     description:
-      "Auriculares inalámbricos con excelente calidProductoad de sonido.",
+      "Auriculares inalámbricos con excelente calidad de sonido.",
     price: 50,
     category: "Auriculares",
     stock: 20,
@@ -41,7 +41,7 @@ export const productList: Product[] = [
   },
   {
     id: 4,
-    photoUrl: "/images/xiaomi.jpg",
+    photoUrl: "/images/mouse.jpg",
     name: "Mouse Inalámbrico",
     brand: "Logitech",
     description: "Mouse inalámbrico ergonómico con gran precisión.",
@@ -53,7 +53,7 @@ export const productList: Product[] = [
   },
   {
     id: 5,
-    photoUrl: "/images/alienware.jpg",
+    photoUrl: "/images/smartwatch.jpg",
     name: "Smartwatch",
     brand: "Samsung",
     description: "Reloj inteligente con monitoreo de salud y notificaciones.",
@@ -65,7 +65,7 @@ export const productList: Product[] = [
   },
   {
     id: 6,
-    photoUrl: "/images/xiaomi.jpg",
+    photoUrl: "/images/keyboard.jpg",
     name: "Teclado Mecánico",
     brand: "MSI",
     description: "Teclado mecánico RGB con switches personalizables.",
