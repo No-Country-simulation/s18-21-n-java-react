@@ -1,10 +1,12 @@
 package com.dev.e_commerce.services.implement;
 
 
+import com.dev.e_commerce.dtos.request.CategoryRequestDto;
 import com.dev.e_commerce.dtos.request.ProductRequestDto;
 import com.dev.e_commerce.dtos.response.ProductResponseDTO;
 import com.dev.e_commerce.exceptions.ApplicationException;
 import com.dev.e_commerce.mappers.ProductMapper;
+import com.dev.e_commerce.models.Category;
 import com.dev.e_commerce.models.Client;
 import com.dev.e_commerce.models.DetailsOrder;
 import com.dev.e_commerce.models.Product;
@@ -16,10 +18,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductInterfacesImpl implements ProductService {
@@ -92,6 +97,7 @@ public class ProductInterfacesImpl implements ProductService {
     }
   }
 
+
   // ELIMINAR PRODUCTO
   @Override
   public void EliminarProducto(long productId) {
@@ -113,7 +119,26 @@ public class ProductInterfacesImpl implements ProductService {
             .orElseThrow(()-> new ApplicationException("Product not found, id"+id));
   }
 
-}
+
+  @Override
+  public List<ProductResponseDTO> filtrarCategoria(CategoryRequestDto categoryRequestDto) {
+    Category category;
+
+    try {
+      category = Category.valueOf(categoryRequestDto.category().toUpperCase());
+    } catch (IllegalArgumentException e) {
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "La categoría especificada no es válida.");
+    }
+    List<Product> productos = productRepository.findByCategory(category);
+    return productos.stream()
+            .map(product -> productMapper.toProductResponseDto(product))
+            .collect(Collectors.toList());
+  }
+
+  }
+
+
+
 
 
 
