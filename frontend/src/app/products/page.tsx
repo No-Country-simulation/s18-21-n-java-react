@@ -1,5 +1,5 @@
 import { ProductGrid } from "@/components";
-import ProductsPagination from "@/components/product/Pagination";
+import ProductsPagination from "@/components/product/ProductsPagination";
 
 export default function Products() {
   return (
