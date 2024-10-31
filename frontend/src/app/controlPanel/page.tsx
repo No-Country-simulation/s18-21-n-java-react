@@ -59,7 +59,7 @@ export default function ControlPanel() {
 
           <div className="w-11/12  p-4 flex flex-col gap-4">
             {(dataProduts?.dataList ?? []).map((product, index: number) => (
-              <CardPanelProducts key={index} {...product} />
+              <CardPanelProducts key={index} product={product} />
             ))}
           </div>
         </div>
