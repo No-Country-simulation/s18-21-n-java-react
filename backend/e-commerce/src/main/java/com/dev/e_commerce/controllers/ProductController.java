@@ -58,7 +58,7 @@ public class ProductController {
   public ResponseEntity<ApiResponseDto<ProductResponseDTO>> saveProduct(
           @Validated @ModelAttribute ProductRequestDto productRequestDto) {
     Product product = productMapper.toEntity(productRequestDto, cloudinaryService);
-    System.out.println("creo el producot*************************************************");
+    System.out.println("creo el producto*************************************************");
     product = productService.guardarProducto(product);
     System.out.println("guardo el producto**************************************");
     ProductResponseDTO productResponseDTO = productMapper.toProductResponseDto(product);
