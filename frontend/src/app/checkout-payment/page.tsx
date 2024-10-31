@@ -22,7 +22,9 @@ export default function CheckoutPaymentPage() {
             <CardTitle>Elige tu medio de pago</CardTitle>
           </CardHeader>
           <CardContent>
-            <CardTitle className="mb-4">Tarjeta de Débito/Crédito</CardTitle>
+            <h3 className="m-2 text-xl">
+              Tarjeta de débito / crédito:
+            </h3>
 
             {/* Contenedor para las tarjetas */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -66,7 +68,9 @@ export default function CheckoutPaymentPage() {
 
       {/* Botón para continuar */}
       <div className="flex justify-center mt-6 sm:justify-end">
-        <ContinueButton step="payment">Continuar con el resumen del pedido</ContinueButton>
+        <ContinueButton step="payment">
+          Continuar con el resumen del pedido
+        </ContinueButton>
       </div>
     </div>
   );

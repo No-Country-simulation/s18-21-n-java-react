@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import ShoppingCartBreadcrumb from "@/components/Breadcrumb/Breadcrumb";
 import ContinueButton from "@/components/ContinueButton/ContinueButton";
@@ -7,7 +7,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -23,17 +22,17 @@ export default function CheckoutConfirmPage() {
     {
       title: "Dirección de Facturación",
       details: [
-        "C.P. 12345",
-        "Calle lorem ipsum #321, Buenos Aires, Argentina",
-        "JUAN PÉREZ LÓPEZ",
+        "C.P. 30840",
+        "Calle Altamirano #94, San Juan José, La Pampa",
+        "JUAN PÉREZ",
       ],
     },
     {
       title: "Dirección de Envío",
       details: [
-        "C.P. 12345",
-        "Calle lorem ipsum #321, Buenos Aires, Argentina",
-        "JUAN PÉREZ LÓPEZ",
+        "C.P. 30840",
+        "Calle Altamirano #94, San Juan José, La Pampa",
+        "JUAN PÉREZ",
       ],
     },
   ];
@@ -48,19 +47,8 @@ export default function CheckoutConfirmPage() {
             <CardTitle>Resumen de tu compra</CardTitle>
           </CardHeader>
           <CardContent>
-            <CardTitle>Artículos totales:</CardTitle>
             <CardDescription>
-              <ul className="list-disc list-inside space-y-1">
-                {["Artículo 1", "Artículo 2", "Artículo 3"].map(
-                  (item, index) => (
-                    <li key={index}>{item}</li>
-                  )
-                )}
-              </ul>
-            </CardDescription>
-          </CardContent>
-          <CardFooter>
-            <CardDescription>
+              <div className="space-y-1">Artículos totales: 3</div>
               <ul className="space-y-1">
                 {orderSummary.map((item, index) => (
                   <li key={index}>
@@ -69,7 +57,7 @@ export default function CheckoutConfirmPage() {
                 ))}
               </ul>
             </CardDescription>
-          </CardFooter>
+          </CardContent>
         </Card>
 
         {/* Dirección de Facturación y Envío */}
@@ -97,7 +85,7 @@ export default function CheckoutConfirmPage() {
           </CardHeader>
           <CardContent>
             <CardDescription>
-              <span>Tarjeta de Débito/Crédito</span>
+              <span>Tarjeta de Débito/Crédito, terminación 3217</span>
             </CardDescription>
           </CardContent>
         </Card>

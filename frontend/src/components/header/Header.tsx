@@ -8,7 +8,7 @@ export const Header = () => {
     <header className="bg-gradient-to-r from-primario to-secundario text-white p-4">
       <div className="flex items-center justify-between md:justify-around">
         {/* Logo con imagen ajustada */}
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="flex items-center justify-start">
           <Image
             src="/Logotipo_tecnológico_minimalista__proyecto_blockchain-removebg-preview.png"
             alt="SmartStore Logo"
@@ -16,6 +16,7 @@ export const Header = () => {
             height={30} // Ajusta la altura
             className="object-contain" // Mantiene proporciones sin estirarse
           />
+          <span className="text-3xl pl-4 font-bold">SmartStore</span>
         </Link>
 
         {/* Barra de búsqueda */}
