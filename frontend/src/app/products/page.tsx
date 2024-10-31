@@ -4,7 +4,7 @@ import ProductsPagination from "@/components/product/ProductsPagination";
 
 export default function Products() {
   return (
-    <div className="flex">
+    <div className="flex items-start">
       <div className="w-1/4 flex items-center justify-center">
         <FiltersBar></FiltersBar>
       </div>
