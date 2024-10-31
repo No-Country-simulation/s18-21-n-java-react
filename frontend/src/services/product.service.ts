@@ -23,7 +23,7 @@ export const creatProduct = async (data: FormData, token: string) => {
 export async function getAllProducts(page: string = "0"): Promise<GetAllProducts> {
   const query = new URL(baseUrl);
   query.searchParams.append("page", page);
-  const res = await fetch(query);
+  const res = await fetch("");
   if (!res.ok) {
     throw new Error(`Error ${res.status}: ${res.statusText}`);
   }
