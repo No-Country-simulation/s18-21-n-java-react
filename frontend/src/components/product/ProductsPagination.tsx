@@ -1,7 +1,8 @@
+"use client";
+
 import {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
@@ -11,7 +12,7 @@ import {
 import { useProductsQuery } from "@/hooks/useProductsQuery";
 
 export default function ProductsPagination() {
-  const {page, prevPage, nextPage} = useProductsQuery();
+  const { page, prevPage, nextPage } = useProductsQuery();
   return (
     <Pagination>
       <PaginationContent>
@@ -19,10 +20,9 @@ export default function ProductsPagination() {
           <PaginationPrevious href="#" onClick={prevPage} />
         </PaginationItem>
         <PaginationItem>
-          <PaginationLink href="#">{page + 1}</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationEllipsis />
+          <PaginationLink className="w-40 mx-auto" href="#">
+            Página {page + 1} de 6
+          </PaginationLink>
         </PaginationItem>
         <PaginationItem>
           <PaginationNext href="#" onClick={nextPage} />
