@@ -3,8 +3,10 @@ package com.dev.e_commerce.controllers;
 import com.dev.e_commerce.dtos.ApiResponseDto;
 import com.dev.e_commerce.dtos.request.UserRequestDto;
 import com.dev.e_commerce.dtos.response.UserResponseDto;
+import com.dev.e_commerce.dtos.request.UpdatePasswordDto;
 import com.dev.e_commerce.exceptions.ApplicationException;
-import com.dev.e_commerce.mappers.user.UserMapper;
+import com.dev.e_commerce.mappers.UserMapper;
+import com.dev.e_commerce.services.implement.MailService;
 import com.dev.e_commerce.services.interfaces.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
@@ -16,28 +18,41 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api/user")
+@RequestMapping("${api.base}/user")
 public class UserController {
     private final UserService userService;
     private final UserMapper userMapper;
 
 
     @Autowired
-    private UserController(UserService userService, UserMapper userMapper) {
+    private UserController(UserService userService, UserMapper userMapper, MailService mailService) {
         this.userService = userService;
         this.userMapper = userMapper;
     }
 
 
-    @PostMapping("/register")
-    @Operation(summary = "Registra un usuario")
-    public ResponseEntity<ApiResponseDto<UserResponseDto>> save(@RequestBody @Valid UserRequestDto requestDto) {
+    @Operation(summary = "Registra un usuario", description = "")
+    @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "form-data")
+    @PostMapping(value = "/register", consumes = "multipart/form-data")
+    public ResponseEntity<ApiResponseDto<UserResponseDto>> save(
+            @Valid @ModelAttribute UserRequestDto requestDto) {
 
         UserResponseDto responseDto = userService.save(requestDto);
         if (responseDto == null) {
             return new ResponseEntity<>(new ApiResponseDto<>(false, "User not saved", null), HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(new ApiResponseDto<>(true, "User has been created", responseDto), HttpStatus.CREATED);
+        return new ResponseEntity<>(new ApiResponseDto<>(true, "User has been created " +
+                "please verify your email", responseDto), HttpStatus.CREATED);
+    }
+
+    @Operation(summary = "Verifica el código enviado")
+    @PostMapping("/verifyCode")
+    public ResponseEntity<ApiResponseDto<String>> verifyCode(@RequestParam String email, @RequestParam String codigo) {
+        if (userService.validateCode(email, codigo)) {
+            return new ResponseEntity<>(new ApiResponseDto<>(true, "Código de verificación correcto", null), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(new ApiResponseDto<>(false, "Código de verificación incorrecto", null), HttpStatus.BAD_REQUEST);
+        }
     }
 
 
@@ -66,9 +81,11 @@ public class UserController {
         }
     }
 
-    @PutMapping("/{id}")
+    @PatchMapping(value = "/{id}", consumes = "multipart/form-data")
     @Operation(summary = "Actualiza un usuario")
-    public ResponseEntity<ApiResponseDto<UserResponseDto>> updateUser(@PathVariable Long id, @RequestBody UserRequestDto requestDto) {
+    @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "form-data")
+    public ResponseEntity<ApiResponseDto<UserResponseDto>> updateUser(@PathVariable Long id,
+                                                                      @ModelAttribute UserRequestDto requestDto) {
         Optional<UserResponseDto> user = userService.findById(id);
         if (user.isPresent()) {
             userService.updateUser(requestDto,id);
@@ -90,4 +107,18 @@ public class UserController {
             return new ResponseEntity<>(new ApiResponseDto<>(false, "User not found", null), HttpStatus.NOT_FOUND);
         }
     }
+
+    @PostMapping("/{id}/changePassword")
+    @Operation(summary = "Cambia la contraseña de un usuario")
+    public ResponseEntity<ApiResponseDto<UserResponseDto>> changePassword(@PathVariable Long id, @RequestBody UpdatePasswordDto updatePasswordDto) {
+        Optional<UserResponseDto> user = userService.findById(id);
+        if (user.isPresent()) {
+            userService.changePassword(updatePasswordDto, id);
+            String message = "Password changed";
+            return new ResponseEntity<>(new ApiResponseDto<>(true, message, null), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(new ApiResponseDto<>(false, "User not found", null), HttpStatus.NOT_FOUND);
+        }
+    }
+
 }

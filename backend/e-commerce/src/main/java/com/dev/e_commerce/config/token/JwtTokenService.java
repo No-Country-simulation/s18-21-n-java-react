@@ -25,8 +25,9 @@ public class JwtTokenService {
     private String apiSecret;
 
     public String getToken(User user) {
+
         return Jwts.builder()
-                // .setClaims(extraClaims)
+               // .setClaims(extraClaims)
                 .setSubject(user.getUsername())
                 .setIssuedAt(Date.from(Instant.now()))
                 .setExpiration(Date.from(generateExpirationDate()))
@@ -38,7 +39,7 @@ public class JwtTokenService {
         return LocalDateTime.now().plusHours(24).toInstant(ZoneOffset.of("-05:00"));
     }
 
-    private Key getKey() {
+    public Key getKey() {
         byte[] keyBytes = Decoders.BASE64.decode(apiSecret);
         return Keys.hmacShaKeyFor(keyBytes);
     }
@@ -51,6 +52,7 @@ public class JwtTokenService {
         final Claims claims = getAllClaims(token);
         return claimsResolver.apply(claims);
     }
+
 
     private Claims getAllClaims(String token) {
         return Jwts.parserBuilder()
@@ -72,6 +74,4 @@ public class JwtTokenService {
     private Date getExpirationDateToken(String token) {
         return getClaim(token, Claims::getExpiration);
     }
-
-
 }

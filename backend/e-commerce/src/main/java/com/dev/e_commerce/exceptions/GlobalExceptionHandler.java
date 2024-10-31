@@ -1,11 +1,13 @@
 package com.dev.e_commerce.exceptions;
 
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.ValidationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -63,6 +65,18 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(HttpClientErrorException.class)
     public ResponseEntity<ErrorResponse> handleHttpClientErrorException(HttpClientErrorException ex) {
         ErrorResponse errorResponse = new ErrorResponse((HttpStatus) ex.getStatusCode(), ex.getStatusText());
+        return new ResponseEntity<>(errorResponse, errorResponse.status());
+    }
+
+    @ExceptionHandler(DisabledException.class)
+    public ResponseEntity<ErrorResponse> handleHttpServletResponseSCForbidden(HttpServletResponse ex) {
+        ErrorResponse errorResponse = new ErrorResponse(HttpStatus.FORBIDDEN, "User not verified");
+        return new ResponseEntity<>(errorResponse, errorResponse.status());
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<ErrorResponse> handleIllegalArgumentException(IllegalArgumentException e){
+        ErrorResponse errorResponse = new ErrorResponse(HttpStatus.BAD_REQUEST, e.getMessage());
         return new ResponseEntity<>(errorResponse, errorResponse.status());
     }
 

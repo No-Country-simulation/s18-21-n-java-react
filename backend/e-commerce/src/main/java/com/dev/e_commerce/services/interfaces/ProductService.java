@@ -1,10 +1,9 @@
 package com.dev.e_commerce.services.interfaces;
 
 
-import com.dev.e_commerce.dtos.request.CategoryRequestDto;
 import com.dev.e_commerce.dtos.request.ProductRequestDto;
 import com.dev.e_commerce.dtos.response.ProductResponseDTO;
-import com.dev.e_commerce.models.Category;
+import com.dev.e_commerce.models.DetailsOrder;
 import com.dev.e_commerce.models.Product;
 import org.springframework.data.domain.Page;
 
@@ -14,14 +13,19 @@ import java.util.Optional;
 public interface ProductService {
 
 
-    Page<Product> listProduct(int page, int size);
-    Product guardarProducto(Product product);
-    Optional<ProductResponseDTO> buscarProducto(long productId);
-void modificarProducto(ProductRequestDto productRequestDto, long productId);
-    void EliminarProducto (long productId);
-    long countTotalProducts();
+  Page<Product> listProduct(int page, int size);
 
+  Product guardarProducto(Product product);
 
-    List<ProductResponseDTO> filtrarCategoria(CategoryRequestDto categoryRequestDto);
+  Optional<ProductResponseDTO> buscarProducto(long productId);
 
+  void modificarProducto(ProductRequestDto productRequestDto, long productId);
+
+  void EliminarProducto(long productId);
+
+  long countTotalProducts();
+
+  Product getById(Long id);
+
+  void updateStock(List<DetailsOrder> detailsOrders);
 }
